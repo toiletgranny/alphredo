@@ -1,0 +1,75 @@
+.color-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	--color-row-height: 4rem;
+	min-height: var(--color-row-height);
+	overflow: hidden;
+	border-radius: var(--radius-large);
+}
+
+.color-row--empty {
+	border: 1px dashed var(--color-border-strong-alpha);
+	&:hover {
+		background-color: var(--color-background-default-alpha);
+	}
+}
+
+.color-row--empty--invert {
+	border: 1px dashed var(--color-border-strong-alpha-inverted);
+	&:hover {
+		background-color: var(--color-background-default-alpha-inverted);
+	}
+}
+
+.color-row__input, .color-row__output {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+	padding: .5rem 1rem;
+}
+
+.color-row__output {
+	justify-content: end;
+	backface-visibility: hidden;
+}
+
+.color-row__output__text {
+	color: white;
+	@extend .c300;
+}
+
+.color-row--animated {
+  animation-duration: var(--animation-timing);
+  animation-timing-function: var(--animation-easing);
+  animation-fill-mode: forwards;
+}
+
+.color-row--animated-in {
+	animation: fadeInUp 500ms var(--animation-easing) backwards;
+}
+
+@keyframes fadeInUp {
+	from {
+		transform: translateY(2rem);
+		opacity: 0;
+	}
+}
+
+@keyframes moveUp {
+	from {
+		margin-top: var(--color-row-height);
+	}
+}
+
+@keyframes moveDown {
+	from {
+		margin-top: calc(var(--color-row-height) * -1);
+	}
+}
+
+@keyframes scaleDown {
+	from {
+		transform: scale(1.05);
+    opacity: .75;
+	}
+}

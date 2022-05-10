@@ -1,0 +1,47 @@
+.segmented-control {
+	display: flex;
+	align-items: stretch;
+	gap: .125rem;
+	padding: .125rem;
+	border-radius: var(--radius-medium);
+	background: var(--color-background-default-alpha);
+}
+
+.segmented-control__button {
+	position: relative;
+	width: 100%;
+	height: 2rem;
+}
+
+.segmented-control__label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: grid;
+	align-items: center;
+	padding: .5rem;
+	border-radius: 6px;
+	@extend .t300-strong;
+	color: var(--color-text-icon-default);
+	text-align: center;
+	&:hover {
+		background: var(--color-background-strong-alpha);
+		cursor: pointer;
+	}
+}
+
+.segmented-control__radio {
+	position: absolute;
+	appearance: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: 6px;
+	&:checked + .segmented-control__label {
+		background: var(--color-base-white);
+		box-shadow: var(--effect-elevation-1dp);
+	}
+}

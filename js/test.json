@@ -1,0 +1,211 @@
+{
+  "settings": {
+    "mode": "darken",
+    "background": {
+      "mode": "default",
+      "color": "#FFFFFF"
+    },
+    "saturation": {
+      "mode": "default",
+      "intensity": "1",
+      "offset": "0",
+      "easing": "easeOutQuart"
+    }
+  },
+  "colors": [
+    {
+      "hex": "#0f172a",
+      "alphaHsl": "hsla(221,100%,6%,0.94)"
+    },
+    {
+      "hex": "#1e293b",
+      "alphaHsl": "hsla(218,100%,6%,0.88)"
+    },
+    {
+      "hex": "#334155",
+      "alphaHsl": "hsla(215,100%,8%,0.8)"
+    },
+    {
+      "hex": "#475569",
+      "alphaHsl": "hsla(216,100%,9%,0.72)"
+    },
+    {
+      "hex": "#64748b",
+      "alphaHsl": "hsla(216,100%,13%,0.61)"
+    },
+    {
+      "hex": "#94a3b8",
+      "alphaHsl": "hsla(215,100%,17%,0.42)"
+    },
+    {
+      "hex": "#cbd5e1",
+      "alphaHsl": "hsla(213,100%,21%,0.2)"
+    },
+    {
+      "hex": "#e2e8f0",
+      "alphaHsl": "hsla(214,100%,24%,0.11)"
+    },
+    {
+      "hex": "#f1f5f9",
+      "alphaHsl": "hsla(210,40%,29%,0.05)"
+    },
+    {
+      "hex": "#f8fafc",
+      "alphaHsl": "hsla(210,40%,29%,0.03)"
+    }
+  ]
+}
+
+{
+  "settings": {
+    "background": "#ffffff",
+    "saturation": {
+      "mode": "default",
+      "intensity": "1",
+      "offset": "0",
+      "easing": "easeOutQuart"
+    }
+  },
+  "colors": [
+    {
+      "hex": "#f7fee7",
+      "alphaHsl": {
+        "h": 78,
+        "s": 100,
+        "l": 48,
+        "a": 0.09,
+        "rgba": [
+          170,
+          244,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#ecfccb",
+      "alphaHsl": {
+        "h": 80,
+        "s": 100,
+        "l": 47,
+        "a": 0.2,
+        "rgba": [
+          162,
+          240,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#d9f99d",
+      "alphaHsl": {
+        "h": 81,
+        "s": 100,
+        "l": 47,
+        "a": 0.38,
+        "rgba": [
+          156,
+          239,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#bef264",
+      "alphaHsl": {
+        "h": 82,
+        "s": 100,
+        "l": 46,
+        "a": 0.61,
+        "rgba": [
+          148,
+          234,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#a3e635",
+      "alphaHsl": {
+        "h": 83,
+        "s": 100,
+        "l": 44,
+        "a": 0.79,
+        "rgba": [
+          139,
+          223,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#84cc16",
+      "alphaHsl": {
+        "h": 84,
+        "s": 100,
+        "l": 39,
+        "a": 0.91,
+        "rgba": [
+          120,
+          199,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#65a30d",
+      "alphaHsl": {
+        "h": 85,
+        "s": 100,
+        "l": 31,
+        "a": 0.95,
+        "rgba": [
+          93,
+          158,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#4d7c0f",
+      "alphaHsl": {
+        "h": 86,
+        "s": 100,
+        "l": 23,
+        "a": 0.94,
+        "rgba": [
+          66,
+          116,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#3f6212",
+      "alphaHsl": {
+        "h": 87,
+        "s": 100,
+        "l": 17,
+        "a": 0.93,
+        "rgba": [
+          48,
+          86,
+          0
+        ]
+      }
+    },
+    {
+      "hex": "#365314",
+      "alphaHsl": {
+        "h": 87,
+        "s": 100,
+        "l": 13,
+        "a": 0.92,
+        "rgba": [
+          37,
+          68,
+          0
+        ]
+      }
+    }
+  ]
+}

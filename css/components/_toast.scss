@@ -1,0 +1,25 @@
+.toast {
+  z-index: 999;
+  position: fixed;
+  bottom: var(--padding);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem .75rem;
+  color: var(--color-base-white);
+  background-color: var(--color-neutral-alpha-800);
+  @extend .t400;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--effect-elevation-4dp);
+  animation: showHideToast var(--animation-timing) var(--animation-easing forwards);
+}
+
+@keyframes showHideToast {
+  from {
+    transform: translateX(-50%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-50%) translateY(3rem) scale(.9);
+    opacity: 0;
+  }
+}

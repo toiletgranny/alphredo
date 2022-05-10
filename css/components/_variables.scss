@@ -1,0 +1,147 @@
+:root {
+
+  // Layout
+  --padding: 1.5rem;
+  --padding-full: calc(var(--padding) * 2);
+
+  // Colors
+  --color-base-black: #000000;
+  --color-base-white: #ffffff;
+  --color-accent-100: #e9effc;
+  --color-accent-200: #b7cbf5;
+  --color-accent-300: #86a8ee;
+  --color-accent-400: #5384e6;
+  --color-accent-500: #205fdc;
+  --color-accent-600: #16439c;
+  --color-caution-100: #fff3e8;
+  --color-caution-200: #ffd0a5;
+  --color-caution-300: #ffaa5d;
+  --color-caution-400: #f98300;
+  --color-caution-500: #d86900;
+  --color-caution-600: #b94f00;
+  --color-error-100: #fee5ee;
+  --color-error-200: #fbb6cf;
+  --color-error-300: #f884ae;
+  --color-error-400: #f54383;
+  --color-error-500: #d30b53;
+  --color-error-600: #9c083e;
+  --color-success-100: #eef6e9;
+  --color-success-200: #bcdbaa;
+  --color-success-300: #88c06c;
+  --color-success-400: #4da42a;
+  --color-success-500: #278500;
+  --color-success-600: #006500;
+  --color-neutral-100: #f4f6f9;
+  --color-neutral-200: #e6e8f0;
+  --color-neutral-300: #c7cbd8;
+  --color-neutral-400: #989eb3;
+  --color-neutral-500: #697089;
+  --color-neutral-600: #4a516d;
+  --color-neutral-700: #303651;
+  --color-neutral-800: #1c2035;
+  --color-neutral-900: #0c0e19;
+  --color-neutral-alpha-100: hsla(216,100%,23%,0.04);
+  --color-neutral-alpha-200: hsla(228,100%,20%,0.1);
+  --color-neutral-alpha-300: hsla(226,100%,15%,0.22);
+  --color-neutral-alpha-400: hsla(227,100%,13%,0.4);
+  --color-neutral-alpha-500: hsla(227,100%,11%,0.59);
+  --color-neutral-alpha-600: hsla(228,100%,10%,0.71);
+  --color-neutral-alpha-700: hsla(230,100%,8%,0.81);
+  --color-neutral-alpha-800: hsla(231,100%,5%,0.89);
+  --color-neutral-alpha-900: hsla(231,100%,3%,0.95);
+  --color-neutral-alpha-inverted-100: hsla(216,100%,99%,0.98);
+  --color-neutral-alpha-inverted-200: hsla(224,100%,98%,0.94);
+  --color-neutral-alpha-inverted-300: hsla(225,100%,96%,0.85);
+  --color-neutral-alpha-inverted-400: hsla(227,100%,93%,0.7);
+  --color-neutral-alpha-inverted-500: hsla(227,100%,88%,0.54);
+  --color-neutral-alpha-inverted-600: hsla(228,100%,84%,0.43);
+  --color-neutral-alpha-inverted-700: hsla(229,100%,80%,0.32);
+  --color-neutral-alpha-inverted-800: hsla(231,100%,76%,0.21);
+  --color-neutral-alpha-inverted-900: hsla(231,100%,74%,0.1);
+  --color-text-icon-placeholder: var(--color-neutral-400);
+  --color-text-icon-muted: var(--color-neutral-500);
+  --color-text-icon-default: var(--color-neutral-700);
+  --color-text-icon-strong: var(--color-neutral-900);
+  --color-background-default: var(--color-neutral-100);
+  --color-background-default-alpha: var(--color-neutral-alpha-100);
+  --color-background-default-alpha-inverted: var(--color-neutral-alpha-inverted-900);
+  --color-background-strong: var(--color-neutral-200);
+  --color-background-strong-alpha: var(--color-neutral-alpha-200);
+  --color-background-strong-alpha-inverted: var(--color-neutral-alpha-inverted-800);
+  --color-border-default: var(--color-neutral-200);
+  --color-border-default-alpha: var(--color-neutral-alpha-200);
+  --color-border-default-alpha-inverted: var(--color-neutral-alpha-inverted-800);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-strong-alpha: var(--color-neutral-alpha-300);
+  --color-border-strong-alpha-inverted: var(--color-neutral-alpha-inverted-700);
+
+  // Typography
+
+  --family-sans-serif: 'Inter', BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --family-code: 'DM Mono', monospace;
+
+  // Effects
+
+  --effect-elevation-4dp: inset 0px -1px 0px var(--color-neutral-alpha-100), 0px 0px 2px var(--color-neutral-alpha-200), 0px 8px 20px var(--color-neutral-alpha-200);
+  --effect-elevation-3dp: inset 0px -1px 0px var(--color-neutral-alpha-100), 0px 0px 1px var(--color-neutral-alpha-300), 0px 2px 12px var(--color-neutral-alpha-200);
+  --effect-elevation-2dp: inset 0px -1px 0px var(--color-neutral-alpha-100), 0px 0px 1px var(--color-neutral-alpha-300), 0px 2px 6px rgba(17, 24, 61, 0.08);
+  --effect-elevation-1dp: inset 0px -1px 0px var(--color-neutral-alpha-100), 0px 0px 1px var(--color-neutral-alpha-300), 0px 1px 4px var(--color-neutral-alpha-200);
+  --effect-elevation-inset-1dp: inset 0px 0px 1px var(--color-neutral-alpha-300), inset 0px 1px 4px var(--color-neutral-alpha-200);
+
+  --effect-border-left: inset 1px 0px 0px var(--color-border-default);
+  --effect-border-top: inset 0px 1px 0px var(--color-border-default);
+  --effect-border-right: inset -1px 0px 0px var(--color-border-default);
+  --effect-border-bottom: inset 0px -1px 0px var(--color-border-default);
+  --effect-border-top-bottom: inset 0px -1px 0px var(--color-border-default), inset 0px 1px 0px var(--color-border-default);
+
+  // Radii
+
+  --radius-large: 12px;
+  --radius-medium: 8px;
+  --radius-small: 4px;
+
+  // Animation
+  --animation-timing: 200ms;
+  --animation-easing: cubic-bezier(0.17, 0.84, 0.44, 1);
+
+  // Components
+
+  --slider-input-height: .25rem;
+  --slider-input-thumb-height: 1.5rem;
+
+}
+
+$text-styles: (
+  '.h900': (var(--family-sans-serif), 4rem, 700, 1.25, 0, none, var(--color-text-icon-strong)),
+  '.h800': (var(--family-sans-serif), 3rem, 700, 1.166, 0, none, var(--color-text-icon-strong)),
+  '.h700': (var(--family-sans-serif), 2.25rem, 700, 1.333, 0, none, var(--color-text-icon-strong)),
+  '.h600': (var(--family-sans-serif), 1.5rem, 700, 1.333, 0, none, var(--color-text-icon-strong)),
+  '.h500': (var(--family-sans-serif), 1.125rem, 700, 1.333, 0, none, var(--color-text-icon-strong)),
+  '.h400': (var(--family-sans-serif), .875rem, 700, 1.429, .005em, none, var(--color-text-icon-strong)),
+  '.h300': (var(--family-sans-serif), .75rem, 600, 1.333, .02em, uppercase, var(--color-text-icon-strong)),
+  '.h200': (var(--family-sans-serif), .625rem, 600, 1.2, .04m, uppercase, var(--color-text-icon-strong)),
+  '.t500': (var(--family-sans-serif), 1.125rem, 400, 1.333, 0, none, var(--color-text-icon-strong)),
+  '.t400': (var(--family-sans-serif), .875rem, 400, 1.429, .005em, none, var(--color-text-icon-strong)),
+  '.t300': (var(--family-sans-serif), .75rem, 400, 1.333, .01em, none, var(--color-text-icon-strong)),
+  '.t500-strong': (var(--family-sans-serif), 1.125rem, 600, 1.333, 0, none, var(--color-text-icon-default)),
+  '.t400-strong': (var(--family-sans-serif), .875rem, 600, 1.429, .005em, none, var(--color-text-icon-default)),
+  '.t300-strong': (var(--family-sans-serif), .75rem, 600, 1.333, .01em, none, var(--color-text-icon-default)),
+  '.c500': (var(--family-code), 1.125rem, 400, 1.333, 0, none, var(--color-text-icon-default)),
+  '.c400': (var(--family-code), .875rem, 400, 1.429, .005em, none, var(--color-text-icon-default)),
+  '.c300': (var(--family-code), .75rem, 400, 1.333, .01em, none, var(--color-text-icon-default)),
+  '.c500-strong': (var(--family-code), 1.125rem, 500, 1.333, 0, none, var(--color-text-icon-default)),
+  '.c400-strong': (var(--family-code), .875rem, 500, 1.429, .005em, none, var(--color-text-icon-default)),
+  '.c300-strong': (var(--family-code), .75rem, 500, 1.333, .01em, none, var(--color-text-icon-default)),
+);
+
+@each $text-style, $properties in $text-styles {
+  #{$text-style} {
+    font-family: nth($properties, 1);
+    font-size: nth($properties, 2);
+    font-weight: nth($properties, 3);
+    line-height: nth($properties, 4);
+    letter-spacing: nth($properties, 5);
+    text-transform: nth($properties, 6);
+    color: nth($properties, 7);
+  }
+}

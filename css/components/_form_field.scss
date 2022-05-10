@@ -1,0 +1,24 @@
+.form-field {
+	display: grid;
+	gap: 1rem;
+}
+
+.form-field__header {
+	display: grid;
+	gap: .25rem;
+}
+
+.form-field__header__label {
+	@extend .t400-strong;
+	color: var(--color-text-icon-default);
+}
+
+.form-field__header__label--secondary {
+	@extend .t300-strong;
+	color: var(--color-text-icon-muted);
+}
+
+.form-field__header__caption {
+	@extend .t300;
+	color: var(--color-text-icon-muted);
+}

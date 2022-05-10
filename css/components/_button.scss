@@ -1,0 +1,68 @@
+.button {
+  display: inline-flex;
+  justify-content: center;
+  gap: .5rem;
+	border: none;
+	padding: .5rem .75rem;
+	border-radius: var(--radius-medium);
+	background: var(--color-accent-500);
+	color: var(--color-base-white);
+	@extend .t400-strong;
+	box-shadow: var(--effect-elevation-1dp);
+  cursor: pointer;
+	&:hover {
+		background: var(--color-accent-400);
+	}
+	&:disabled {
+		font-weight: 400;
+		cursor: default;
+		&:hover {
+			background-color: inherit;
+		}
+	}
+}
+
+.button--icon-only {
+	padding: .5rem;
+}
+
+.button--outline {
+  background: var(--color-base-white);
+  color: var(--color-text-icon-default);
+  & .button__icon {
+    color: var(--color-text-icon-muted);
+  }
+	&:hover {
+		background: var(--color-background-default);
+    & .button__icon {
+      color: inherit;
+    }
+	}
+}
+
+.button--ghost {
+  background: none;
+	color: var(--color-text-icon-default);
+	box-shadow: none;
+  & .button__icon {
+    color: var(--color-text-icon-muted);
+  }
+	&:hover {
+		background: var(--color-background-default-alpha);
+    & .button__icon {
+      color: inherit;
+    }
+	}
+	&:disabled {
+		color: var(--color-text-icon-placeholder);
+		&:hover {
+			background-color: initial;
+		}
+	}
+}
+
+.button-group {
+	display: inline-flex;
+	align-items: center;
+	gap: .25rem;
+}

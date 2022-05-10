@@ -1,0 +1,25 @@
+.textarea {
+  resize: none;
+	border: none;
+	padding: 1rem;
+	border-radius: var(--radius-medium);
+	background: var(--color-base-white);
+	color: var(--color-text-icon-default);
+	@extend .t400;
+	box-shadow: var(--effect-elevation-1dp);
+	&::placeholder {
+		color: var(--color-text-icon-placeholder);
+	}
+  &:read-only {
+    box-shadow: none;
+    background: var(--color-background-default-alpha);
+  }
+}
+
+.textarea--full {
+  flex-grow: 1;
+}
+
+.textarea--code {
+  @extend .c300;
+}
