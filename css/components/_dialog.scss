@@ -8,13 +8,16 @@
 	flex-direction: column;
 	gap: 1rem;
 	border-radius: var(--radius-large);
-	background: var(--color-base-white);
+	background: var(--color-background-surface);
 	padding: 1.5rem;
 	box-shadow: var(--effect-elevation-4dp);
 	color: inherit;
 	// animation: dialogSlideIn var(--animation-timing) var(--animation-easing);
 	&::backdrop {
-		background-color: hsla(226,90%,15%,0.22);
+		background-color: #0D0E12B0;
+		@media (prefers-color-scheme: dark) {
+			background-color: #050505E0;
+		}
 	}
 }
 

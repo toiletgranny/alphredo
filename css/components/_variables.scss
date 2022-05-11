@@ -31,49 +31,51 @@
   --color-success-400: #4da42a;
   --color-success-500: #278500;
   --color-success-600: #006500;
-  --color-neutral-100: #f4f6f9;
-  --color-neutral-200: #e6e8f0;
-  --color-neutral-300: #c7cbd8;
-  --color-neutral-400: #989eb3;
-  --color-neutral-500: #697089;
-  --color-neutral-600: #4a516d;
-  --color-neutral-700: #303651;
-  --color-neutral-800: #1c2035;
-  --color-neutral-900: #0c0e19;
-  --color-neutral-alpha-100: hsla(216,100%,23%,0.04);
-  --color-neutral-alpha-200: hsla(228,100%,20%,0.1);
-  --color-neutral-alpha-300: hsla(226,100%,15%,0.22);
-  --color-neutral-alpha-400: hsla(227,100%,13%,0.4);
-  --color-neutral-alpha-500: hsla(227,100%,11%,0.59);
-  --color-neutral-alpha-600: hsla(228,100%,10%,0.71);
-  --color-neutral-alpha-700: hsla(230,100%,8%,0.81);
-  --color-neutral-alpha-800: hsla(231,100%,5%,0.89);
-  --color-neutral-alpha-900: hsla(231,100%,3%,0.95);
-  --color-neutral-alpha-inverted-100: hsla(216,100%,99%,0.98);
-  --color-neutral-alpha-inverted-200: hsla(224,100%,98%,0.94);
-  --color-neutral-alpha-inverted-300: hsla(225,100%,96%,0.85);
-  --color-neutral-alpha-inverted-400: hsla(227,100%,93%,0.7);
-  --color-neutral-alpha-inverted-500: hsla(227,100%,88%,0.54);
-  --color-neutral-alpha-inverted-600: hsla(228,100%,84%,0.43);
-  --color-neutral-alpha-inverted-700: hsla(229,100%,80%,0.32);
-  --color-neutral-alpha-inverted-800: hsla(231,100%,76%,0.21);
-  --color-neutral-alpha-inverted-900: hsla(231,100%,74%,0.1);
+  --color-neutral-100: #F4F6F9;
+  --color-neutral-200: #E6E8F0;
+  --color-neutral-300: #C7CBD8;
+  --color-neutral-400: #9CA1B3;
+  --color-neutral-500: #707689;
+  --color-neutral-600: #4F5464;
+  --color-neutral-700: #32343F;
+  --color-neutral-800: #1F1F26;
+  --color-neutral-900: #151519;
+  --color-neutral-darken-100: #002F750A;
+  --color-neutral-darken-200: #0014661A;
+  --color-neutral-darken-300: #00124D38;
+  --color-neutral-darken-400: #06113763;
+  --color-neutral-darken-500: #0F131F8F;
+  --color-neutral-darken-600: #0D0E12B0;
+  --color-neutral-darken-700: #070708CC;
+  --color-neutral-darken-800: #050505E0;
+  --color-neutral-darken-900: #020203EB;
+  --color-neutral-lighten-100: #FCFCFDFA;
+  --color-neutral-lighten-200: #FAFAFAF0;
+  --color-neutral-lighten-300: #F4F4F6D9;
+  --color-neutral-lighten-400: #EDEEF2B2;
+  --color-neutral-lighten-500: #E0E4F08A;
+  --color-neutral-lighten-600: #CDD8F963;
+  --color-neutral-lighten-700: #CCD6FF40;
+  --color-neutral-lighten-800: #D1D1FF26;
+  --color-neutral-lighten-900: #D6D6FF1A;
   --color-text-icon-placeholder: var(--color-neutral-400);
   --color-text-icon-muted: var(--color-neutral-500);
   --color-text-icon-default: var(--color-neutral-700);
   --color-text-icon-strong: var(--color-neutral-900);
+  --color-background-surface: var(--color-base-white);
+  --color-background-overlay: var(--color-neutral-darken-600);
   --color-background-default: var(--color-neutral-100);
-  --color-background-default-alpha: var(--color-neutral-alpha-100);
-  --color-background-default-alpha-inverted: var(--color-neutral-alpha-inverted-900);
+  --color-background-default-alpha: var(--color-neutral-darken-100);
+  --color-background-default-alpha-inverted: var(--color-neutral-lighten-900);
   --color-background-strong: var(--color-neutral-200);
-  --color-background-strong-alpha: var(--color-neutral-alpha-200);
-  --color-background-strong-alpha-inverted: var(--color-neutral-alpha-inverted-800);
+  --color-background-strong-alpha: var(--color-neutral-darken-200);
+  --color-background-strong-alpha-inverted: var(--color-neutral-lighten-800);
   --color-border-default: var(--color-neutral-200);
-  --color-border-default-alpha: var(--color-neutral-alpha-200);
-  --color-border-default-alpha-inverted: var(--color-neutral-alpha-inverted-800);
+  --color-border-default-alpha: var(--color-neutral-darken-200);
+  --color-border-default-alpha-inverted: var(--color-neutral-lighten-800);
   --color-border-strong: var(--color-neutral-300);
-  --color-border-strong-alpha: var(--color-neutral-alpha-300);
-  --color-border-strong-alpha-inverted: var(--color-neutral-alpha-inverted-700);
+  --color-border-strong-alpha: var(--color-neutral-darken-300);
+  --color-border-strong-alpha-inverted: var(--color-neutral-lighten-700);
 
   // Typography
 
@@ -82,11 +84,12 @@
 
   // Effects
 
-  --effect-elevation-4dp: inset 0px -1px 0px var(--color-neutral-alpha-100), 0px 0px 2px var(--color-neutral-alpha-200), 0px 8px 20px var(--color-neutral-alpha-200);
-  --effect-elevation-3dp: inset 0px -1px 0px var(--color-neutral-alpha-100), 0px 0px 1px var(--color-neutral-alpha-300), 0px 2px 12px var(--color-neutral-alpha-200);
-  --effect-elevation-2dp: inset 0px -1px 0px var(--color-neutral-alpha-100), 0px 0px 1px var(--color-neutral-alpha-300), 0px 2px 6px rgba(17, 24, 61, 0.08);
-  --effect-elevation-1dp: inset 0px -1px 0px var(--color-neutral-alpha-100), 0px 0px 1px var(--color-neutral-alpha-300), 0px 1px 4px var(--color-neutral-alpha-200);
-  --effect-elevation-inset-1dp: inset 0px 0px 1px var(--color-neutral-alpha-300), inset 0px 1px 4px var(--color-neutral-alpha-200);
+  --effect-elevation-4dp: inset 0px -1px 0px var(--color-neutral-darken-100), 0px 0px 2px var(--color-neutral-darken-200), 0px 8px 20px var(--color-neutral-darken-200);
+  --effect-elevation-3dp: inset 0px -1px 0px var(--color-neutral-darken-100), 0px 0px 1px var(--color-neutral-darken-300), 0px 2px 12px var(--color-neutral-darken-200);
+  --effect-elevation-2dp: inset 0px -1px 0px var(--color-neutral-darken-100), 0px 0px 1px var(--color-neutral-darken-300), 0px 2px 6px var(--color-neutral-darken-200);
+  --effect-elevation-1dp: inset 0px -1px 0px var(--color-neutral-darken-100), 0px 0px 1px var(--color-neutral-darken-300), 0px 1px 4px var(--color-neutral-darken-200);
+  --effect-elevation-inset-1dp: inset 0px 1px 0px var(--color-neutral-darken-200), inset 0px 0px 1px var(--color-neutral-darken-300), inset 0px 1px 4px var(--color-neutral-darken-200);
+
 
   --effect-border-left: inset 1px 0px 0px var(--color-border-default);
   --effect-border-top: inset 0px 1px 0px var(--color-border-default);
@@ -96,9 +99,9 @@
 
   // Radii
 
-  --radius-large: 12px;
-  --radius-medium: 8px;
   --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 12px;
 
   // Animation
   --animation-timing: 200ms;
@@ -109,6 +112,46 @@
   --slider-input-height: .25rem;
   --slider-input-thumb-height: 1.5rem;
 
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Colors
+    --color-neutral-lighten-100: #FCFCFDF7;
+    --color-neutral-lighten-200: #FAFAFAED;
+    --color-neutral-lighten-300: #F4F5F6D4;
+    --color-neutral-lighten-400: #EDEEF2AB;
+    --color-neutral-lighten-500: #E0E4F07D;
+    --color-neutral-lighten-600: #CDD9F954;
+    --color-neutral-lighten-700: #C7D2FF2B;
+    --color-neutral-lighten-800: #C7C7FF0F;
+    --color-neutral-lighten-900: #151519;
+    --color-text-icon-placeholder: var(--color-neutral-500);
+    --color-text-icon-muted: var(--color-neutral-400);
+    --color-text-icon-default: var(--color-neutral-200);
+    --color-text-icon-strong: var(--color-base-white);
+    --color-background-overlay: var(--color-neutral-darken-800);
+    --color-background-surface: var(--color-neutral-900);
+    --color-background-default: var(--color-neutral-800);
+    --color-background-default-alpha: var(--color-neutral-lighten-800);
+    --color-background-default-alpha-inverted: var(--color-neutral-darken-200);
+    --color-background-strong: var(--color-neutral-700);
+    --color-background-strong-alpha: var(--color-neutral-lighten-700);
+    --color-background-strong-alpha-inverted: var(--color-neutral-darken-100);
+    --color-border-default: var(--color-neutral-700);
+    --color-border-default-alpha: var(--color-neutral-lighten-700);
+    --color-border-default-alpha-inverted: var(--color-neutral-darken-300);
+    --color-border-strong: var(--color-neutral-600);
+    --color-border-strong-alpha: var(--color-neutral-lighten-600);
+    --color-border-strong-alpha-inverted: var(--color-neutral-darken-400);
+
+    // Effects
+    --effect-elevation-4dp: 0px 2px 4px var(--color-neutral-darken-800), 0px 8px 24px var(--color-neutral-darken-800), inset 0px 0px 0px 1px var(--color-neutral-lighten-800), inset 0px 1px 0px var(--color-neutral-lighten-800);
+    --effect-elevation-3dp: 0px 1px 2px var(--color-neutral-darken-800), 0px 6px 12px var(--color-neutral-darken-800), inset 0px 0px 0px 1px var(--color-neutral-lighten-800), inset 0px 1px 0px var(--color-neutral-lighten-800);
+    --effect-elevation-2dp: 0px 1px 1px var(--color-neutral-darken-800), 0px 4px 10px -2px var(--color-neutral-darken-800), inset 0px 0px 0px 1px var(--color-neutral-lighten-800), inset 0px 1px 0px var(--color-neutral-lighten-800);
+    --effect-elevation-1dp: 0px 2px 12px -6px var(--color-neutral-darken-800), inset 0px 0px 0px 1px var(--color-neutral-lighten-800), inset 0px 1px 0px var(--color-neutral-lighten-800);
+    --effect-elevation-inset-1dp: inset 0px 1px 0px var(--color-neutral-lighten-800), inset 0px 0px 1px var(--color-neutral-darken-300), inset 0px 1px 4px var(--color-neutral-darken-200);
+  }
 }
 
 $text-styles: (

@@ -2,7 +2,7 @@
 	border: none;
 	padding: .5rem .75rem;
 	border-radius: var(--radius-medium);
-	background: var(--color-base-white);
+	background: var(--color-background-surface);
 	color: var(--color-text-icon-default);
 	@extend .t400;
 	box-shadow: var(--effect-elevation-1dp);
@@ -102,6 +102,7 @@ input[type="color"]::-moz-color-swatch {
 	flex: 1;
 	padding-left: .5rem;
 	box-shadow: none;
+	background: unset;
 	&:focus-visible {
 		outline: none;
 	}

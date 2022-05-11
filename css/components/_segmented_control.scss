@@ -41,7 +41,7 @@
 	bottom: 0;
 	border-radius: 6px;
 	&:checked + .segmented-control__label {
-		background: var(--color-base-white);
+		background: var(--color-background-surface);
 		box-shadow: var(--effect-elevation-1dp);
 	}
 }
