@@ -10,7 +10,7 @@
   @extend .t400;
   border-radius: var(--radius-medium);
   box-shadow: var(--effect-elevation-4dp);
-  animation: showHideToast var(--animation-timing) var(--animation-easing forwards);
+  animation: showHideToast var(--animation-timing) var(--animation-easing) forwards;
 }
 
 @keyframes showHideToast {

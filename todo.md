@@ -20,8 +20,15 @@
   [x] Rozwiązać problem z nieprawidiłowo resetującymi się paletami
   [x] Obsługa błędów,
   [ ] Zrobić porządek z buttonami, label, name, title, itd.
-  [ ] Pozmieniać SASSowe variabelki na CSSowe,
-[ ] Wrzucić na GitHuba,
+  [x] Pozmieniać SASSowe variabelki na CSSowe,
+[x] Wrzucić na GitHuba,
+[x] Zaktualizować dark mode
+  [x] Rozwazyc usunięcie dark borderów i teł,
+  [x] Przyjrzeć się kolorom renderującym się w wierszach kolorystycznych (borderom tez),
+[x] Dodać opcję reversowania,
+[ ] Jednak handlować z problemem błędnej palety,
+[ ] Dodać wykres saturacji,
+[x] Naprawić problem z brakiem animacji tołsta.
 [ ] Modal informacyjny,
 
 ## Post-release

@@ -22,6 +22,9 @@
 .input--select {
 	appearance: none;
 	background-image: url('../src/select-chevron.svg');
+	@media (prefers-color-scheme: dark) {
+		background-image: url('../src/select-chevron-dark.svg');
+	}
 	background-repeat: no-repeat;
 	background-position: center right .75rem;
 }
@@ -34,10 +37,13 @@
 	color: var(--color-base-white);
 	@extend .c400;
 	cursor: copy;
-	border: 1px solid transparent;
 	&:hover {
 		background: var(--color-background-default-alpha-inverted);
-		border: 1px solid var(--color-border-default-alpha-inverted);
+		box-shadow: inset 0 0 0 1px var(--color-border-default-alpha-inverted);
+		@media (prefers-color-scheme: dark) {
+			background: var(--color-background-default-alpha);
+			box-shadow: inset 0 0 0 1px var(--color-border-default-alpha);
+		}
 	}
 	&:active {
 		transform: scale(.95);
@@ -45,21 +51,31 @@
 }
 
 .color-output--invert {
-	color: var(--color-text-icon-default);
+	color: var(--color-base-black);
 	&:hover {
 		background: var(--color-background-default-alpha);
-		border: 1px solid var(--color-border-default-alpha);
+		box-shadow: inset 0 0 0 1px var(--color-border-default-alpha);
+		@media (prefers-color-scheme: dark) {
+			background: var(--color-background-default-alpha-inverted);
+			box-shadow: inset 0 0 0 1px var(--color-border-default-alpha-inverted);
+		}
 	}
 }
 
 .color-output__callout {
 	padding: .25rem;
 	border-radius: var(--radius-small);
-	border: 1px solid var(--color-border-default-alpha-inverted);
+	box-shadow: inset 0 0 0 1px var(--color-border-default-alpha-inverted);
+	@media (prefers-color-scheme: dark) {
+		box-shadow: inset 0 0 0 1px var(--color-border-default-alpha);
+	}
 }
 
 .color-output--invert .color-output__callout {
-	border: 1px solid var(--color-border-default-alpha);
+	box-shadow: inset 0 0 0 1px var(--color-border-default-alpha);
+	@media (prefers-color-scheme: dark) {
+		box-shadow: inset 0 0 0 1px var(--color-border-default-alpha-inverted);
+	}
 }
 
 // Color
@@ -72,18 +88,18 @@ input[type="color"] {
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
-  padding: 0px;
-  border: none;
+	padding: 0px;
+	border: none;
 }
 
 input[type="color"]::-webkit-color-swatch {
-  border: none;
-  border-radius: 0;
+	border: none;
+	border-radius: 0;
 }
 
 input[type="color"]::-moz-color-swatch {
-  border: none;
-  border-radius: 0;
+	border: none;
+	border-radius: 0;
 }
 
 // Input Color Combo

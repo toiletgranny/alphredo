@@ -5,7 +5,6 @@
 
 
 .slider__input {
-	background: url('/src/slider-thumb.svg');
 	-webkit-appearance: none;
 	appearance: none;
 	margin: calc((var(--slider-input-thumb-height) - var(--slider-input-height)) / 2) 0;
@@ -24,6 +23,9 @@
 	height: var(--slider-input-thumb-height);
 	background-color: var(--color-background-surface);
 	background-image: url('/src/slider-thumb.svg');
+	@media (prefers-color-scheme: dark) {
+		background-image: url('/src/slider-thumb-dark.svg');
+	}
 	background-position: center center;
 	background-size: auto;
 	background-repeat: no-repeat;
@@ -40,6 +42,9 @@
 	height: var(--slider-input-thumb-height);
 	background-color: var(--color-background-surface);
 	background-image: url('/src/slider-thumb.svg');
+	@media (prefers-color-scheme: dark) {
+		background-image: url('/src/slider-thumb-dark.svg');
+	}
 	background-position: center center;
 	background-size: auto;
 	background-repeat: no-repeat;

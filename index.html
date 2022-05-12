@@ -105,10 +105,16 @@
 
 	<main id="viewport" class="main" style="background-color: white;">
 		<div id="viewport-toolbar" class="main__aside">
-			<button id="button-clear" class="button button--ghost button--icon-only" name="clear-colors" type="button"
-				aria-label="Clear colors" title="Remove all colors">
-				<img class="button__icon" src="/src/icon-trash.svg" alt="trash" onload="SVGInject(this)">
-			</button>
+			<div class="button-group button-group--reverse">
+				<button id="button-reverse" class="button button--ghost button--icon-only" name="clear-colors" type="button"
+					aria-label="Reverse colors" title="Reverse colors">
+					<img class="button__icon" src="/src/icon-reverse.svg" alt="reverse" onload="SVGInject(this)">
+				</button>
+				<button id="button-clear" class="button button--ghost button--icon-only" name="clear-colors" type="button"
+					aria-label="Clear colors" title="Remove all colors">
+					<img class="button__icon" src="/src/icon-trash.svg" alt="trash" onload="SVGInject(this)">
+				</button>
+			</div>
 			<hr class="divider">
 			<div class="background-control">
 				<input id="viewport-background-color" class="background-control__color" type="color" value="#FFFFFF"

@@ -337,6 +337,13 @@ document.querySelectorAll("input[name='export']").forEach((item) => {
   });
 });
 
+document.querySelector("#button-reverse").addEventListener("click", () => {
+  palette.user.colors.reverse();
+  palette.save();
+  Toast.render("🤏 Colors reversed!");
+  renderDom(undefined, true);
+});
+
 document.querySelector("#button-clear").addEventListener("click", () => {
   palette.user.colors.length = 0;
   palette.save();

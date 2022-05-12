@@ -62,7 +62,11 @@
 }
 
 .button-group {
-	display: inline-flex;
+	display: flex;
 	align-items: center;
 	gap: .25rem;
+}
+
+.button-group--reverse {
+	flex-direction: column;
 }
