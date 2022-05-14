@@ -95,6 +95,7 @@ svg {
 .main__aside {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	gap: 1rem;
 	padding: 1rem;
 	overflow: auto;

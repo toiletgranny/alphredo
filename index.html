@@ -115,7 +115,7 @@
 					<img class="button__icon" src="/src/icon-trash.svg" alt="trash" onload="SVGInject(this)">
 				</button>
 			</div>
-			<hr class="divider">
+			<!-- <hr class="divider"> -->
 			<div class="background-control">
 				<input id="viewport-background-color" class="background-control__color" type="color" value="#FFFFFF"
 					aria-label="Select viewport background" title="Set viewport preview color">
@@ -136,7 +136,7 @@
 				<p class="form-field__header__caption">Specify the background for transparent equivalents to achieve the same
 					look.</p>
 			</div>
-			<div class="segmented-control">
+			<div id="background-mode" class="segmented-control">
 				<div class="segmented-control__button">
 					<input id="background-white" class="segmented-control__radio" name="background-mode" type="radio"
 						value="white">
@@ -153,9 +153,9 @@
 					<label class="segmented-control__label" for="background-custom">Custom...</label>
 				</div>
 			</div>
-			<div id="settings-backround-color" class="input input--color-combo" style="display: none;">
+			<div id="backround-color" class="input input--color-combo" style="display: none;">
 				<input class="input--color-combo__color" type="color" value="#FFFFFF" aria-label="Background">
-				<input id="settings-backround-color-input" class="input input--color-combo__text" name="background-color" type="text"
+				<input class="input input--color-combo__text" name="background-color" type="text"
 					value="#FFFFFF" aria-label="Background" maxlength="7">
 			</div>
 		</div>
@@ -178,10 +178,11 @@
 					</div>
 				</div>
 			</div>
-			<div id="saturation-adjustments" class="form-field" style="display: none;">
+			<div id="saturation-adjustments" class="form-field form-field--group" style="display: none;">
+				<canvas id="saturation-chart"></canvas>
 				<div class="form-field">
-					<label class="form-field__header__label--secondary" for="saturation-easing">Easing</label>
-					<select id="saturation-easing" class="input input--select" name="saturation-easing">
+					<label class="form-field__header__label--secondary" for="saturation-gradation">Gradation</label>
+					<select id="saturation-gradation" class="input input--select">
 						<option value="linear">linear</option>
 						<option value="easeInQuad">easeInQuad</option>
 						<option value="easeOutQuad">easeOutQuad</option>
@@ -200,31 +201,30 @@
 				<div class="form-field">
 					<label class="form-field__header__label--secondary" for="saturation-intensity">Intensity</label>
 					<div class="slider">
-						<input id="saturation-intensity" class="slider__input" name="saturation-intensity" type="range" value="1"
-							min="0" max="1" step="0.01">
+						<input id="saturation-intensity" class="slider__input" type="range" value="1" min="0" max="1" step="0.01">
 						<div class="slider__legend">
 							<span>0</span>
-							<output name="intensity">1</output>
+							<output>1</output>
 							<span>1</span>
 						</div>
 					</div>
 				</div>
 				<div class="form-field">
-					<label class="form-field__header__label--secondary" for="saturation-offset">Offset</label>
-					<div class="slider">
-						<input id="saturation-offset" class="slider__input" name="saturation-offset" type="range" value="0" min="-1"
-							max="1" step="0.1">
-						<div class="slider__legend">
-							<span>-1</span>
-							<output name="offset">0</output>
-							<span>1</span>
+						<label class="form-field__header__label--secondary" for="saturation-offset">Offset</label>
+						<div class="slider">
+							<input id="saturation-offset" class="slider__input" type="range" value="0" min="-1" max="1" step="0.01">
+							<div class="slider__legend">
+								<span>-1</span>
+								<output>0</output>
+								<span>1</span>
+							</div>
 						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</aside>
 
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 	<script src="/js/main.js" type="module"></script>
 
 </body>

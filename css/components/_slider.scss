@@ -58,7 +58,7 @@
 	display: flex;
 	justify-content: space-between;
 	@extend .t300;
-	color: var(--color-text-icon-placeholder);
+	color: var(--color-text-icon-muted);
 	& output {
 		@extend .t300-strong;
 		color: var(--color-text-icon-default);

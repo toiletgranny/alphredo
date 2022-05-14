@@ -1,10 +1,18 @@
 .form-field {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 1rem;
 }
 
+.form-field--group {
+	padding: 1rem;
+	border-radius: var(--radius-medium);
+	border: 1px solid var(--color-border-default-alpha)
+}
+
 .form-field__header {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: .25rem;
 }
 
