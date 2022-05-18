@@ -106,16 +106,20 @@ const viewport = {
 		colorInput: 'input[name="color-input"]',
 	},
 	setBackground: (color) => {
-		return (document.querySelector(viewport.selectors.viewport).style.backgroundColor = color);
+		if (Calc.brightnessByColor(palette.user.settings.background) < 128) {
+			document.querySelector(viewport.selectors.viewport).classList.add("main--inverted");
+		} else {
+			document.querySelector(viewport.selectors.viewport).classList.remove("main--inverted");
+		}
+		document.querySelector(viewport.selectors.viewport).style.backgroundColor = color;
 	},
 	render: () => {
-		const colorListContainer = document.querySelector(viewport.selectors.colorList);
 		
 		viewport.setBackground(palette.user.settings.background);
-		document.querySelector("#viewport-background-color").value =
-		palette.user.settings.background === "white" ? "#FFFFFF" : palette.user.settings.background === "black" ? "#000000" : palette.user.settings.background;
+		document.querySelector("#viewport-background-color").value = palette.user.settings.background === "white" ? "#FFFFFF" : palette.user.settings.background === "black" ? "#000000" : palette.user.settings.background;
 		document.querySelector("#reset-viewport-button").style.display = "none";
 		
+		const colorListContainer = document.querySelector(viewport.selectors.colorList);
 		const colorList = palette.user.colors.map((color) => {
 			return viewport.colorRow(color.hex, color.alphaHsl);
 		});
@@ -171,20 +175,17 @@ const viewport = {
 	},
 	colorRow: (input = "", output = "") => {
 		const outputDiv = `<div class="color-row__output" style="background-color: hsla(${output.h},${output.s}%,${output.l}%,${output.a})">
-		<output class="color-output ${
-			Calc.brightnessByColor(input) > 128 ? " color-output--invert" : ""
-		}" name="color-output" aria-label="Transparent color output" title="Copy to clipboard">
-		hsla(${output.h},${palette.user.settings.saturation.mode === "custom" ? `<span class="color-output__callout">${output.s}%</span>` : `${output.s}%`},${
-			output.l
-		}%,<span class="color-output__callout">${output.a}</span>)
+		<output class="color-output ${Calc.brightnessByColor(input) > 128 ? " color-output--invert" : ""}" name="color-output" aria-label="Transparent color output" title="Copy to clipboard">
+			hsla(${output.h},${palette.user.settings.saturation.mode === "custom" ? `<span class="color-output__callout">${output.s}%</span>` : `${output.s}%`},${output.l}%,<span class="color-output__callout">${output.a}</span>)
 		</output>
 		</div>`;
-		return `<li class="color-row${!input && !output ? (Calc.brightnessByColor(palette.user.settings.background) < 128 ? " color-row--empty--invert" : " color-row--empty") : ""}" draggable="true">
+		return `<li class="color-row${!input && !output ? (Calc.brightnessByColor(palette.user.settings.background) < 128 ? " color-row--empty--invert" : " color-row--empty") : ""}">
 							<div class="color-row__input" style="background-color: ${input}">
-								<input class="input" type="text" name="color-input" value="${input}" placeholder="Add color..." maxlength="7" aria-label="Color input">
+								<input class="input" type="text" name="color-input" value="${input}" placeholder="Add color..." aria-label="Color input">
 							</div>
 							${output ? outputDiv : ""} 
 						</li>`;
+						// <img class="color-row__icon" src="/src/icon-chevron-right.svg" alt="chevron" onload="SVGInject(this)"></img>
 	},
 };
 
@@ -251,30 +252,6 @@ const settings = {
 
 };
 
-function renderExport() {
-	const outputType = document.querySelector("input[name='export']:checked").value;
-	let output;
-	if (outputType === "hsla") {
-		const hslaOutput = [];
-		for (let i = 0; i < palette.user.colors.length; i++) {
-			const hsla = palette.user.colors[i].alphaHsl;
-			hslaOutput.push(`${palette.user.colors[i].hex} → hsla(${hsla.h},${hsla.s}%,${hsla.l}%,${hsla.a})`);
-		}
-		output = hslaOutput.join("\n");
-	} else if (outputType === "hex") {
-		const hexOutput = [];
-		for (let i = 0; i < palette.user.colors.length; i++) {
-			const hsla = palette.user.colors[i].alphaHsl;
-			hexOutput.push(palette.user.colors[i].hex + " → " + Calc.hslaToHex(hsla.h, hsla.s, hsla.l, hsla.a * 100 + "%"));
-		}
-		output = hexOutput.join("\n");
-	} else {
-		output = JSON.stringify(palette.user, null, 2);
-	}
-	document.querySelector("#export-output").innerHTML = output;
-}
-
-// Chart
 const saturationChart = new Chart(document.querySelector("#saturation-chart").getContext("2d"), {
 	type: 'line',
 	data: {
@@ -322,6 +299,29 @@ const saturationChart = new Chart(document.querySelector("#saturation-chart").ge
 	}
 });
 
+function renderExport() {
+	const outputType = document.querySelector("input[name='export']:checked").value;
+	let output;
+	if (outputType === "hsla") {
+		const hslaOutput = [];
+		for (let i = 0; i < palette.user.colors.length; i++) {
+			const hsla = palette.user.colors[i].alphaHsl;
+			hslaOutput.push(`${palette.user.colors[i].hex} → hsla(${hsla.h},${hsla.s}%,${hsla.l}%,${hsla.a})`);
+		}
+		output = hslaOutput.join("\n");
+	} else if (outputType === "hex") {
+		const hexOutput = [];
+		for (let i = 0; i < palette.user.colors.length; i++) {
+			const hsla = palette.user.colors[i].alphaHsl;
+			hexOutput.push(palette.user.colors[i].hex + " → " + Calc.hslaToHex(hsla.h, hsla.s, hsla.l, hsla.a * 100 + "%"));
+		}
+		output = hexOutput.join("\n");
+	} else {
+		output = JSON.stringify(palette.user, null, 2);
+	}
+	document.querySelector("#export-output").innerHTML = output;
+}
+
 function renderDom(callback, animate) {
 	palette.user = palette.load() || JSON.parse(JSON.stringify(palette.initial));
 	palette.calculate(palette.user);
@@ -342,6 +342,7 @@ function renderDom(callback, animate) {
 			});
 		});
 	}
+	
 }
 
 window.onload = renderDom(undefined, true);
@@ -367,9 +368,36 @@ document.querySelector("#button-reset").addEventListener("click", () => {
 	renderDom(undefined, true);
 });
 
+document.querySelectorAll("input[name='import']").forEach(item => {
+	item.addEventListener("click", () => {
+		const importInput = document.querySelector("#import-input");
+		if (item.value === "hex") {
+			importInput.placeholder = "Paste comma separated HEX colors here"
+		} else {
+			importInput.placeholder = "Paste exported JSON here"
+		}
+	});
+});
+
 document.querySelector("#button-import").addEventListener("click", () => {
-	localStorage.setItem("palette", JSON.stringify(JSON.parse(document.querySelector("#import-input").value)));
+
+	const importInput = document.querySelector("#import-input");
+	if (document.querySelector("input[name='import']:checked").value === "hex") {
+		palette.user.colors.length = 0;
+
+		const hexColors = importInput.value.replace(/,\s*$/, "").split(",");
+		hexColors.forEach(color => {
+			const validatedColor = Calc.validateHex(color.trim());
+			if (validatedColor) {
+				palette.user.colors.push({ "hex": color.trim(), alphaHsl: {} });
+			}
+		})
+		palette.save();
+	} else {
+		localStorage.setItem("palette", JSON.stringify(JSON.parse(importInput.value)));
+	}
 	document.querySelector("#import-dialog").close();
+	importInput.value = "";
 	Toast.render("🎉 Palette imported!");
 	renderDom(undefined, true);
 });
@@ -421,3 +449,6 @@ document.querySelectorAll(".slider__input").forEach((item) => {
 		Slider.update(item);
 	});
 });
+
+const foo = new URLSearchParams(palette.user).toString();
+console.log(foo);

@@ -26,13 +26,14 @@
   [x] Rozwazyc usunięcie dark borderów i teł,
   [x] Przyjrzeć się kolorom renderującym się w wierszach kolorystycznych (borderom tez),
 [x] Dodać opcję reversowania,
-[ ] Jednak handlować z problemem błędnej palety,
 [x] Dodać wykres saturacji,
-[ ] Drag & drop,
-[ ] Wklejanie kilku hexów na raz,
 [x] Naprawić problem z brakiem animacji tołsta.
-[ ] Modal informacyjny,
+[x] Wklejanie kilku hexów na raz,
 [ ] Naprawić problem z opacity na monitorach,
+[ ] Dark mode,
+[ ] Jednak handlować z problemem błędnej palety,
+[ ] Drag & drop,
+[ ] Modal informacyjny,
 
 ## Post-release
 [ ] Dodać splitbee,

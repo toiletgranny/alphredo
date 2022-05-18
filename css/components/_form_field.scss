@@ -5,9 +5,11 @@
 }
 
 .form-field--group {
-	padding: 1rem;
-	border-radius: var(--radius-medium);
-	border: 1px solid var(--color-border-default-alpha)
+	// margin-top: 1rem;
+	gap: 2rem;
+	// padding: 1rem;
+	// border-radius: var(--radius-medium);
+	// border: 1px solid var(--color-border-default-alpha)
 }
 
 .form-field__header {

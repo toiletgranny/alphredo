@@ -1,4 +1,5 @@
 .color-row {
+	z-index: 1;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	--color-row-height: 4rem;
@@ -7,21 +8,22 @@
 	border-radius: var(--radius-large);
 }
 
-.color-row--empty {
-	border: 1px dashed var(--color-border-strong-alpha);
-	&:hover {
-		background-color: var(--color-background-default-alpha);
-	}
-}
-
-.color-row--empty--invert {
-	border: 1px dashed var(--color-border-strong-alpha-inverted);
-	&:hover {
+.color-row--empty:hover {
+	background-color: var(--color-background-default-alpha);
+	@media (prefers-color-scheme: dark) {
 		background-color: var(--color-background-default-alpha-inverted);
 	}
 }
 
+.color-row--empty--invert:hover {
+	background-color: var(--color-background-default-alpha-inverted);
+	@media (prefers-color-scheme: dark) {
+		background-color: var(--color-background-default-alpha);
+	}
+}
+
 .color-row__input, .color-row__output {
+	position: relative;
 	display: flex;
 	align-items: center;
 	gap: .5rem;
@@ -35,6 +37,12 @@
 .color-row__output__text {
 	color: white;
 	@extend .c300;
+}
+
+.color-row__icon {
+	position: absolute;
+	right: 0;
+	color: var(--color-text-icon-muted);
 }
 
 .color-row--animated {
