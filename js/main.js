@@ -101,15 +101,15 @@ const palette = {
 const viewport = {
 	selectors: {
 		viewport: "#viewport",
-		colorList: "#color-list",
+		colorList: ".color-list",
 		colorRow: ".color-row",
 		colorInput: 'input[name="color-input"]',
 	},
 	setBackground: (color) => {
 		if (Calc.brightnessByColor(palette.user.settings.background) < 128) {
-			document.querySelector(viewport.selectors.viewport).classList.add("main--inverted");
+			document.querySelector(viewport.selectors.colorList).classList.add("color-list--inverted");
 		} else {
-			document.querySelector(viewport.selectors.viewport).classList.remove("main--inverted");
+			document.querySelector(viewport.selectors.colorList).classList.remove("color-list--inverted");
 		}
 		document.querySelector(viewport.selectors.viewport).style.backgroundColor = color;
 	},

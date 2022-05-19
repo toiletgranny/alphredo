@@ -67,7 +67,7 @@
 				</button>
 			</div>
 		</div>
-		<ol id="color-list">
+		<ol class="color-list">
 		</ol>
 	</main>
 
@@ -122,10 +122,6 @@
 			</div>
 			<div id="saturation-adjustments" class="form-field form-field--group" style="display: none;">
 				<div class="form-field">
-					<span class="form-field__header__label--secondary">Preview</span>
-					<canvas id="saturation-chart"></canvas>
-				</div>
-				<div class="form-field">
 					<label class="form-field__header__label--secondary" for="saturation-gradation">Gradation</label>
 					<select id="saturation-gradation" class="input input--select">
 						<option value="linear">linear</option>
@@ -144,7 +140,7 @@
 					</select>
 				</div>
 				<div class="form-field">
-					<label class="form-field__header__label--secondary" for="saturation-intensity">Intensity</label>
+					<label class="form-field__header__label--secondary" for="saturation-intensity">Correction intensity</label>
 					<div class="slider">
 						<input id="saturation-intensity" class="slider__input" type="range" value="1" min="0" max="1" step="0.01">
 						<div class="slider__legend">
@@ -164,6 +160,10 @@
 								<span>1</span>
 							</div>
 						</div>
+				</div>
+				<div class="form-field">
+					<span class="form-field__header__label--secondary">Preview</span>
+					<canvas id="saturation-chart"></canvas>
 				</div>
 			</div>
 		</div>
