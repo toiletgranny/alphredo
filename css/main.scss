@@ -91,13 +91,13 @@ svg {
 .aside {
 	display: flex;
 	flex-direction: column;
-	overflow: auto;
 	background: var(--color-background-surface);
 }
 
 .aside--settings {
 	max-width: 25rem;
 	gap: 2rem;
+	overflow: auto;
 	padding: var(--padding);
 	box-shadow: var(--effect-border-left);
 }

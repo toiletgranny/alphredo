@@ -1,66 +1,45 @@
 .tooltip {
-  display: none;
-  position: absolute;
-  padding: 0.25rem 0.5rem;
-  background: var(--color-background-surface);
-  border-radius: var(--radius-large);
-  color: var(--color-text-icon-muted);
-  box-shadow: var(--effect-elevation-2dp);
-  @extend .t300
-}
-
-.tooltip__parent:hover {
-  position: relative;
-  & > .tooltip {
-    display: inline-block;
-    animation: showTooltip 100;
-    animation: showTooltip var(--animation-timing) var(--animation-easing) 250ms backwards;
-  }
+	position: relative;
+	--tooltip-offset: .5rem;
+	&:after {
+		content: attr(data-title);
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 999;
+		padding: 0.25rem 0.5rem;
+		background: var(--color-background-surface);
+		border-radius: var(--radius-small);
+		color: var(--color-text-icon-muted);
+		box-shadow: var(--effect-elevation-2dp);
+		@extend .t300;
+		white-space: nowrap;
+	}
+	&:hover:after {
+		opacity: 1;
+		visibility: visible;
+		transition: all var(--animation-timing) var(--animation-easing) 250ms;
+	}
 }
 
 .tooltip--bottom {
-  bottom: -100%;
-  left: 50%;
-  transform: translateX(-50%);
+	&:after {
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	&:hover:after {
+		top: calc(100% + var(--tooltip-offset));
+	}
 }
 
 .tooltip--right {
-  right: -100%;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-@keyframes showTooltip {
-  from {
-    opacity: 0;
-  }
-}
-
-///
-
-[data-title] {
-  position: relative;
-  &:after {
-    content: attr(data-title);
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) translateY(calc(100% + .25rem));
-    opacity: 0;
-    visibility: hidden;
-    z-index: 999;
-    padding: 0.25rem 0.5rem;
-    background: var(--color-background-surface);
-    border-radius: var(--radius-medium);
-    color: var(--color-text-icon-muted);
-    box-shadow: var(--effect-elevation-2dp);
-    bottom: 0px;
-    @extend .t300;
-    white-space: nowrap;
-  }
-  &:hover:after {
-    opacity: 1;
-    visibility: visible;
-    transition: all var(--animation-timing) var(--animation-easing) 250ms;
-  }
+	&:after {
+		top: 50%;
+		left: 100%;
+		transform: translateY(-50%);
+	}
+	&:hover:after {
+		left: calc(100% + var(--tooltip-offset));
+	}
 }
