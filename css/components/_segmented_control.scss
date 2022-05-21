@@ -1,4 +1,5 @@
 .segmented-control {
+	position: relative;
 	display: flex;
 	align-items: stretch;
 	gap: .125rem;
@@ -26,10 +27,14 @@
 	@extend .t300-strong;
 	color: var(--color-text-icon-default);
 	text-align: center;
+	transition: all var(--animation-timing) var(--animation-easing);
 	&:hover {
 		background: var(--color-background-default-alpha);
 		color: var(--color-text-icon-strong);
 		cursor: pointer;
+	}
+	&:active {
+		transform: scale(.95);
 	}
 }
 
@@ -42,8 +47,8 @@
 	bottom: 0;
 	border-radius: 6px;
 	&:checked + .segmented-control__label {
-		color: var(--color-text-icon-default);
 		background: var(--color-background-surface);
 		box-shadow: var(--effect-elevation-1dp);
+		// @extend .t300-strong;
 	}
 }

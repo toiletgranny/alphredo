@@ -1,8 +1,8 @@
 :root {
 
 	// Layout
-	--padding: 1.5rem;
-	--padding-full: calc(var(--padding) * 2);
+	--padding: 3rem;
+	--header-height: 5rem;
 
 	// Colors
 	--color-base-black: #000000;
@@ -13,12 +13,6 @@
 	--color-accent-400: #5384e6;
 	--color-accent-500: #205fdc;
 	--color-accent-600: #16439c;
-	--color-caution-100: #fff3e8;
-	--color-caution-200: #ffd0a5;
-	--color-caution-300: #ffaa5d;
-	--color-caution-400: #f98300;
-	--color-caution-500: #d86900;
-	--color-caution-600: #b94f00;
 	--color-error-100: #fee5ee;
 	--color-error-200: #fbb6cf;
 	--color-error-300: #f884ae;

@@ -11,8 +11,12 @@
 	@extend .t400-strong;
 	box-shadow: var(--effect-elevation-1dp);
   cursor: pointer;
+	transition: all var(--animation-timing) var(--animation-easing);
 	&:hover {
 		background: var(--color-accent-400);
+	}
+	&:active {
+		transform: scale(.95);
 	}
 	&:disabled {
 		font-weight: 400;
@@ -41,6 +45,10 @@
 	}
 }
 
+.button__icon {
+	transition: all var(--animation-timing) var(--animation-easing);
+}
+
 .button--ghost {
   background: none;
 	color: var(--color-text-icon-default);
@@ -65,7 +73,7 @@
 .button-group {
 	display: flex;
 	align-items: center;
-	gap: .25rem;
+	gap: .5rem;
 }
 
 .button-group--reverse {

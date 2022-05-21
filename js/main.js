@@ -107,9 +107,9 @@ const viewport = {
 	},
 	setBackground: (color) => {
 		if (Calc.brightnessByColor(palette.user.settings.background) < 128) {
-			document.querySelector(viewport.selectors.colorList).classList.add("color-list--inverted");
+			document.querySelector(viewport.selectors.viewport).classList.add("viewport--inverted");
 		} else {
-			document.querySelector(viewport.selectors.colorList).classList.remove("color-list--inverted");
+			document.querySelector(viewport.selectors.viewport).classList.remove("viewport--inverted");
 		}
 		document.querySelector(viewport.selectors.viewport).style.backgroundColor = color;
 	},
@@ -174,18 +174,20 @@ const viewport = {
 		});
 	},
 	colorRow: (input = "", output = "") => {
+		const colorInvert = Calc.brightnessByColor(input) > 128 ? true : false;
+		const backgroundInvert = Calc.brightnessByColor(palette.user.settings.background) < 128 ? true : false;
 		const outputDiv = `<div class="color-row__output" style="background-color: hsla(${output.h},${output.s}%,${output.l}%,${output.a})">
-		<output class="color-output ${Calc.brightnessByColor(input) > 128 ? " color-output--invert" : ""}" name="color-output" aria-label="Transparent color output" title="Copy to clipboard">
-			hsla(${output.h},${palette.user.settings.saturation.mode === "custom" ? `<span class="color-output__callout">${output.s}%</span>` : `${output.s}%`},${output.l}%,<span class="color-output__callout">${output.a}</span>)
-		</output>
-		</div>`;
-		return `<li class="color-row${!input && !output ? (Calc.brightnessByColor(palette.user.settings.background) < 128 ? " color-row--empty--invert" : " color-row--empty") : ""}">
+												<svg class="color-row__icon" style="background-color: ${input}" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29293 2.29286C4.90241 2.68338 4.90241 3.31655 5.29293 3.70707L9.58582 7.99996L5.29293 12.2929C4.90241 12.6834 4.90241 13.3165 5.29293 13.7071C5.68345 14.0976 6.31662 14.0976 6.70714 13.7071L11.7071 8.70707C12.0977 8.31655 12.0977 7.68338 11.7071 7.29286L6.70714 2.29286C6.31662 1.90233 5.68345 1.90233 5.29293 2.29286Z" fill="currentColor"/></svg>
+												<output class="color-output ${colorInvert ? " color-output--invert" : ""}" name="color-output" aria-label="Transparent color output" title="Copy to clipboard">
+													hsla(${output.h},${palette.user.settings.saturation.mode === "custom" ? `<span class="color-output__callout">${output.s}%</span>` : `${output.s}%`},${output.l}%,<span class="color-output__callout">${output.a}</span>)
+												</output>
+											</div>`;
+		return `<li class="color-row ${colorInvert ? "color-row--invert" : ""} ${!input ? (backgroundInvert ? "color-row--empty--invert" : "color-row--empty") : ""}">
 							<div class="color-row__input" style="background-color: ${input}">
 								<input class="input" type="text" name="color-input" value="${input}" placeholder="Add color..." aria-label="Color input">
 							</div>
 							${output ? outputDiv : ""} 
 						</li>`;
-						// <img class="color-row__icon" src="/src/icon-chevron-right.svg" alt="chevron" onload="SVGInject(this)"></img>
 	},
 };
 
@@ -260,7 +262,7 @@ const saturationChart = new Chart(document.querySelector("#saturation-chart").ge
 			data: [],
 			pointBackgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--color-text-icon-muted'),
 			pointBorderWidth: 0,
-			pointRadius: 4,
+			pointRadius: 2,
 			borderColor: getComputedStyle(document.documentElement).getPropertyValue('--color-border-default-alpha'),
 			borderWidth: 2
 		}]
@@ -449,6 +451,3 @@ document.querySelectorAll(".slider__input").forEach((item) => {
 		Slider.update(item);
 	});
 });
-
-const foo = new URLSearchParams(palette.user).toString();
-console.log(foo);

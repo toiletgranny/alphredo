@@ -16,7 +16,7 @@
 
 	<header class="header">
 		<div class="header__start">
-			<img src="src/logo.png" alt="Logo" width="36" height="32"
+			<img src="src/logo.png" alt="Logo" width="34" height="32"
 				srcset="src/logo.png 1x, src/logo@2x.png 2x, src/logo@3x.png 3x">
 			<div class="logo__title">
 				<h1 class="h500">Alphredo</h1>
@@ -24,20 +24,18 @@
 			</div>
 		</div>
 		<div class="header__end">
-			<button class="button button--ghost button--icon-only" type="button" title="Help" aria-label="Help">
-				<img class="button__icon" src="/src/icon-help.svg" alt="help" onload="SVGInject(this)">
-			</button>
-			<hr class="divider divider--vertical">
 			<div class="button-group">
+				<button class="button button--ghost button--icon-only" type="button" title="About the app" aria-label="About the app">
+					<img class="button__icon" src="/src/icon-info.svg" alt="info" onload="SVGInject(this)">
+				</button>
 				<button name="button-dialog-open" class="button button--ghost button--icon-only" type="button" title="Reset palette"
 					aria-label="Reset palette" data-dialog="reset">
 					<img class="button__icon" src="/src/icon-reset.svg" alt="reset" onload="SVGInject(this)">
 				</button>
-				<button name="button-dialog-open" class="button button--ghost button--icon-only" type="button" title="Import palette"
-					aria-label="Import palette" data-dialog="import">
-					<img class="button__icon" src="/src/icon-import.svg" alt="import" onload="SVGInject(this)">
-				</button>
 			</div>
+			<button name="button-dialog-open" class="button button--outline" type="button" title="Import palette" data-dialog="import">
+					Import
+				</button>
 			<button name="button-dialog-open" class="button" type="button" data-dialog="export">
 				<img class="button__icon" src="/src/icon-export.svg" alt="export" onload="SVGInject(this)">
 				Export
@@ -45,8 +43,8 @@
 		</div>
 	</header>
 
-	<main id="viewport" class="main" style="background-color: white;">
-		<div id="viewport-toolbar" class="main__aside">
+	<main class="main" style="background-color: white;">
+		<div id="viewport-toolbar" class="aside aside--toolbar">
 			<div class="button-group button-group--reverse">
 				<button id="button-reverse" class="button button--ghost button--icon-only" name="clear-colors" type="button"
 					aria-label="Reverse colors" title="Reverse colors">
@@ -67,115 +65,115 @@
 				</button>
 			</div>
 		</div>
-		<ol class="color-list">
-		</ol>
-	</main>
-
-	<aside id="settings" class="aside">
-		<div id="background" class="form-field">
-			<div class="form-field__header">
-				<h2 class="form-field__header__label">Background</h2>
-				<p class="form-field__header__caption">Specify the background for transparent equivalents to achieve the same
-					look.</p>
-			</div>
-			<div id="background-mode" class="segmented-control">
-				<div class="segmented-control__button">
-					<input id="background-white" class="segmented-control__radio" name="background-mode" type="radio"
-						value="white">
-					<label class="segmented-control__label" for="background-white">White</label>
-				</div>
-				<div class="segmented-control__button">
-					<input id="background-black" class="segmented-control__radio" name="background-mode" type="radio"
-						value="black">
-					<label class="segmented-control__label" for="background-black">Black</label>
-				</div>
-				<div class="segmented-control__button">
-					<input id="background-custom" class="segmented-control__radio" name="background-mode" type="radio"
-						value="custom">
-					<label class="segmented-control__label" for="background-custom">Custom...</label>
-				</div>
-			</div>
-			<div id="backround-color" class="input input--color-combo" style="display: none;">
-				<input class="input--color-combo__color" type="color" value="#FFFFFF" aria-label="Background">
-				<input class="input input--color-combo__text" name="background-color" type="text"
-					value="#FFFFFF" aria-label="Background" maxlength="7">
-			</div>
+		<div id="viewport" class="viewport">
+			<ol class="color-list">
+			</ol>
 		</div>
-		<div id="saturation" class="form-field">
-			<div class="form-field">
+		<div id="settings" class="aside aside--settings">
+			<div id="background" class="form-field">
 				<div class="form-field__header">
-					<h2 class="form-field__header__label">Saturation</h2>
-					<p class="form-field__header__caption">Adjust the saturation in consecutive steps of your palette.</p>
+					<h2 class="form-field__header__label">Background</h2>
+					<p class="form-field__header__caption">Specify the background for transparent equivalents to achieve the same
+						look.</p>
 				</div>
-				<div class="segmented-control">
+				<div id="background-mode" class="segmented-control">
 					<div class="segmented-control__button">
-						<input id="saturation-default" class="segmented-control__radio" name="saturation-mode" type="radio"
-							value="default">
-						<label class="segmented-control__label" for="saturation-default">Default</label>
+						<input id="background-white" class="segmented-control__radio" name="background-mode" type="radio"
+							value="white">
+						<label class="segmented-control__label" for="background-white">White</label>
 					</div>
 					<div class="segmented-control__button">
-						<input id="saturation-custom" class="segmented-control__radio" name="saturation-mode" type="radio"
+						<input id="background-black" class="segmented-control__radio" name="background-mode" type="radio"
+							value="black">
+						<label class="segmented-control__label" for="background-black">Black</label>
+					</div>
+					<div class="segmented-control__button">
+						<input id="background-custom" class="segmented-control__radio" name="background-mode" type="radio"
 							value="custom">
-						<label class="segmented-control__label" for="saturation-custom">Custom...</label>
+						<label class="segmented-control__label" for="background-custom">Custom...</label>
 					</div>
+				</div>
+				<div id="backround-color" class="input input--color-combo" style="display: none;">
+					<input class="input--color-combo__color" type="color" value="#FFFFFF" aria-label="Background">
+					<input class="input input--color-combo__text" name="background-color" type="text"
+						value="#FFFFFF" aria-label="Background" maxlength="7">
 				</div>
 			</div>
-			<div id="saturation-adjustments" class="form-field form-field--group" style="display: none;">
+			<div id="saturation" class="form-field">
 				<div class="form-field">
-					<label class="form-field__header__label--secondary" for="saturation-gradation">Gradation</label>
-					<select id="saturation-gradation" class="input input--select">
-						<option value="linear">linear</option>
-						<option value="easeInQuad">easeInQuad</option>
-						<option value="easeOutQuad">easeOutQuad</option>
-						<option value="easeInOutQuad">easeInOutQuad</option>
-						<option value="easeInCubic">easeInCubic</option>
-						<option value="easeOutCubic">easeOutCubic</option>
-						<option value="easeInOutCubic">easeInOutCubic</option>
-						<option value="easeInQuart">easeInQuart</option>
-						<option value="easeOutQuart">easeOutQuart</option>
-						<option value="easeInOutQuart">easeInOutQuart</option>
-						<option value="easeInQuint">easeInQuint</option>
-						<option value="easeOutQuint">easeOutQuint</option>
-						<option value="easeInOutQuint">easeInOutQuint</option>
-					</select>
-				</div>
-				<div class="form-field">
-					<label class="form-field__header__label--secondary" for="saturation-intensity">Correction intensity</label>
-					<div class="slider">
-						<input id="saturation-intensity" class="slider__input" type="range" value="1" min="0" max="1" step="0.01">
-						<div class="slider__legend">
-							<span>0</span>
-							<output>1</output>
-							<span>1</span>
+					<div class="form-field__header">
+						<h2 class="form-field__header__label">Saturation</h2>
+						<p class="form-field__header__caption">Adjust the saturation in consecutive steps of your palette.</p>
+					</div>
+					<div class="segmented-control">
+						<div class="segmented-control__button">
+							<input id="saturation-default" class="segmented-control__radio" name="saturation-mode" type="radio"
+								value="default">
+							<label class="segmented-control__label" for="saturation-default">Default</label>
+						</div>
+						<div class="segmented-control__button">
+							<input id="saturation-custom" class="segmented-control__radio" name="saturation-mode" type="radio"
+								value="custom">
+							<label class="segmented-control__label" for="saturation-custom">Custom...</label>
 						</div>
 					</div>
 				</div>
-				<div class="form-field">
-						<label class="form-field__header__label--secondary" for="saturation-offset">Offset</label>
+				<div id="saturation-adjustments" class="form-field form-field--group" style="display: none;">
+					<div class="form-field">
+						<label class="form-field__header__label--secondary" for="saturation-gradation">Adjustment gradation</label>
+						<select id="saturation-gradation" class="input input--select">
+							<option value="linear">linear</option>
+							<option value="easeInQuad">easeInQuad</option>
+							<option value="easeOutQuad">easeOutQuad</option>
+							<option value="easeInOutQuad">easeInOutQuad</option>
+							<option value="easeInCubic">easeInCubic</option>
+							<option value="easeOutCubic">easeOutCubic</option>
+							<option value="easeInOutCubic">easeInOutCubic</option>
+							<option value="easeInQuart">easeInQuart</option>
+							<option value="easeOutQuart">easeOutQuart</option>
+							<option value="easeInOutQuart">easeInOutQuart</option>
+							<option value="easeInQuint">easeInQuint</option>
+							<option value="easeOutQuint">easeOutQuint</option>
+							<option value="easeInOutQuint">easeInOutQuint</option>
+						</select>
+					</div>
+					<div class="form-field">
+						<label class="form-field__header__label--secondary" for="saturation-intensity">Adjustment intensity</label>
 						<div class="slider">
-							<input id="saturation-offset" class="slider__input" type="range" value="0" min="-1" max="1" step="0.01">
+							<input id="saturation-intensity" class="slider__input" type="range" value="1" min="0" max="1" step="0.01">
 							<div class="slider__legend">
-								<span>-1</span>
-								<output>0</output>
+								<span>0</span>
+								<output>1</output>
 								<span>1</span>
 							</div>
 						</div>
-				</div>
-				<div class="form-field">
-					<span class="form-field__header__label--secondary">Preview</span>
-					<canvas id="saturation-chart"></canvas>
+					</div>
+					<div class="form-field">
+							<label class="form-field__header__label--secondary" for="saturation-offset">Adjustment offset</label>
+							<div class="slider">
+								<input id="saturation-offset" class="slider__input" type="range" value="0" min="-1" max="1" step="0.01">
+								<div class="slider__legend">
+									<span>-1</span>
+									<output>0</output>
+									<span>1</span>
+								</div>
+							</div>
+					</div>
+					<div class="form-field">
+						<span class="form-field__header__label--secondary">Saturation preview</span>
+						<canvas id="saturation-chart"></canvas>
+					</div>
 				</div>
 			</div>
 		</div>
-	</aside>
-
+	</main>
 
 	<div>
 		<dialog id="reset-dialog" class="dialog dialog--alert">
 			<div class="dialog__body">
 				<img width="48" height="48" src="/src/icon-illustrative-warning.svg" alt="Warning">
 				<div class="dialog--alert__body-text">
-					<span class="h400">Reset palette?</span>
+					<span class="h500">Reset palette?</span>
 					<p class="t300-regular">This will erase your palette and settings.</p>
 				</div>
 			</div>

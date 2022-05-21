@@ -32,6 +32,14 @@
 	border-radius: 999px;
 	box-shadow: var(--effect-elevation-1dp);
 	cursor: pointer;
+	transition: all var(--animation-timing) var(--animation-easing);
+	&:hover {
+		transform: scale(1.05);
+		box-shadow: var(--effect-elevation-3dp);
+	}
+	&:active {
+		transform: scale(.95);
+	}
 }
 
 .slider__input::-moz-range-thumb {

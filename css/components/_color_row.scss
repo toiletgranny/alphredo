@@ -40,9 +40,18 @@
 }
 
 .color-row__icon {
+	z-index: 1;
+	box-sizing: content-box;
 	position: absolute;
-	right: 0;
-	color: var(--color-text-icon-muted);
+	left: 0;
+	padding: .25rem;
+	transform: translateX(-50%);
+	border-radius: 999px;
+	color: var(--color-neutral-lighten-700);
+}
+
+.color-row--invert .color-row__icon, .color-row--invert .color-row__icon {
+	color: var(--color-neutral-darken-300);
 }
 
 .color-row--animated {
