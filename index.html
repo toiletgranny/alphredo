@@ -25,11 +25,11 @@
 		</div>
 		<div class="header__end">
 			<div class="button-group">
-				<button class="button button--ghost button--icon-only" type="button" title="About the app" aria-label="About the app">
+				<button class="button button--ghost button--icon-only tooltip tooltip--bottom" type="button" aria-label="About the app" data-title="About the app">
 					<img class="button__icon" src="/src/icon-info.svg" alt="info" onload="SVGInject(this)">
 				</button>
-				<button name="button-dialog-open" class="button button--ghost button--icon-only" type="button" title="Reset palette"
-					aria-label="Reset palette" data-dialog="reset">
+				<button name="button-dialog-open" class="button button--ghost button--icon-only tooltip tooltip--bottom" type="button"
+					aria-label="Reset palette" data-dialog="reset" data-title="Reset palette">
 					<img class="button__icon" src="/src/icon-reset.svg" alt="reset" onload="SVGInject(this)">
 				</button>
 			</div>
@@ -46,12 +46,12 @@
 	<main class="main" style="background-color: white;">
 		<div id="viewport-toolbar" class="aside aside--toolbar">
 			<div class="button-group button-group--reverse">
-				<button id="button-reverse" class="button button--ghost button--icon-only" name="clear-colors" type="button"
-					aria-label="Reverse colors" title="Reverse colors">
+				<button id="button-reverse" class="button button--ghost button--icon-only tooltip tooltip--right" name="clear-colors" type="button"
+					aria-label="Reverse colors" data-title="Reverse colors">
 					<img class="button__icon" src="/src/icon-reverse.svg" alt="reverse" onload="SVGInject(this)">
 				</button>
-				<button id="button-clear" class="button button--ghost button--icon-only" name="clear-colors" type="button"
-					aria-label="Clear colors" title="Remove all colors">
+				<button id="button-clear" class="button button--ghost button--icon-only tooltip tooltip--right" name="clear-colors" type="button"
+					aria-label="Clear colors" data-title="Remove all colors">
 					<img class="button__icon" src="/src/icon-trash.svg" alt="trash" onload="SVGInject(this)">
 				</button>
 			</div>
