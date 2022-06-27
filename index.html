@@ -25,7 +25,7 @@
 		</div>
 		<div class="header__end">
 			<div class="button-group">
-				<button class="button button--ghost button--icon-only tooltip tooltip--bottom" type="button" aria-label="About the app" data-title="About the app">
+				<button name="button-dialog-open" class="button button--ghost button--icon-only tooltip tooltip--bottom" type="button" aria-label="About the app" data-dialog="welcome" data-title="About the app">
 					<img class="button__icon" src="/src/icon-info.svg" alt="info" onload="SVGInject(this)">
 				</button>
 				<button name="button-dialog-open" class="button button--ghost button--icon-only tooltip tooltip--bottom" type="button"
@@ -55,7 +55,6 @@
 					<img class="button__icon" src="/src/icon-trash.svg" alt="trash" onload="SVGInject(this)">
 				</button>
 			</div>
-			<!-- <hr class="divider"> -->
 			<div class="background-control">
 				<input id="viewport-background-color" class="background-control__color" type="color" value="#FFFFFF"
 					aria-label="Select viewport background" title="Set viewport preview color">
@@ -95,7 +94,7 @@
 				</div>
 				<div id="backround-color" class="input input--color-combo" style="display: none;">
 					<input class="input--color-combo__color" type="color" value="#FFFFFF" aria-label="Background">
-					<input class="input input--color-combo__text" name="background-color" type="text"
+					<input id="background-color" class="input input--color-combo__text" name="background-color" type="text"
 						value="#FFFFFF" aria-label="Background" maxlength="7">
 				</div>
 			</div>
@@ -169,10 +168,51 @@
 	</main>
 
 	<div>
+		<dialog id="welcome-dialog" class="dialog dialog--welcome">
+			<div class="dialog__body" style="padding-top: 1rem;">
+				<div class="dialog-welcome__logo">
+					<img src="src/logo.png" alt="Logo" width="34" height="32"
+				srcset="src/logo.png 1x, src/logo@2x.png 2x, src/logo@3x.png 3x">
+				</div>
+			</div>
+			<div class="dialog__body dialog__body--illustration">
+				<div class="color-swatch">
+					<div class="color-swatch__color">
+						<div style="background: #86A8EE"></div>
+					</div>
+					<div class="color-swatch__figcaption">
+						<span>Opaque</span>
+						<span class="color-swatch__figcaption__hex">
+							#5384E6
+						</span>
+					</div>
+				</div>
+				<img class="dialog__body--illustration__arrow" src="/src/icon-chevron-right.svg" alt="chevron right" onload="SVGInject(this)">
+				<div class="color-swatch">
+					<div class="color-swatch__color">
+						<div style="background: rgba(0, 73, 219, 0.47)"></div>
+					</div>
+					<div class="color-swatch__figcaption">
+						<span>Transparent</span>
+						<span class="color-swatch__figcaption__hex">
+							#0049DB, 47%
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="dialog__body" style="padding-top: 2rem;">
+				<div class="dialog__body__text">
+					<span class="h500">Create transparent versions of your colors</span>
+					<p class="t400">Alphredo generates translucent colors looking identical as&nbsp;their opaque counterparts when placed against the&nbsp;same background.</p>
+				</div>
+				<button class="button" name="button-dialog-close" type="button" aria-label="Close">Get started</button>
+				<span class="t300">Created by <a href="http://twitter.com/adamprzewoski" target="_blank" rel="noopener noreferrer">@adamprzewoski</a></span>
+			</div>
+		</dialog>
 		<dialog id="reset-dialog" class="dialog dialog--alert">
 			<div class="dialog__body">
 				<img width="48" height="48" src="/src/icon-illustrative-warning.svg" alt="Warning">
-				<div class="dialog--alert__body-text">
+				<div class="dialog__body__text">
 					<span class="h500">Reset palette?</span>
 					<p class="t300-regular">This will erase your palette and settings.</p>
 				</div>
@@ -230,8 +270,14 @@
 						<label class="segmented-control__label" for="export-json">JSON</label>
 					</div>
 				</div>
-				<textarea id="export-output" class="textarea textarea--full textarea--code" name="export-output"
-					aria-label="Export output" placeholder="Export should be here..." readonly></textarea>
+				<div class="textarea--read-only">
+					<button id="button-export-copy" class="button button--outline button--icon-only textarea--read-only__button tooltip tooltip--left" type="button" aria-label="Copy to clipboard" data-title="Copy to clipboard">
+						<img class="button__icon" src="/src/icon-copy.svg" alt="copy" onload="SVGInject(this)">
+					</button>
+					<textarea id="export-output" class="textarea textarea--code textarea--read-only__child"
+						aria-label="Export output" placeholder="Export should be here..." readonly>
+					</textarea>
+				</div>
 			</div>
 		</dialog>
 	</div>

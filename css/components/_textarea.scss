@@ -15,11 +15,26 @@
     background: var(--color-background-default);
   }
 }
-
-.textarea--full {
-  flex-grow: 1;
-}
-
 .textarea--code {
   @extend .c300;
+}
+
+.textarea--full {
+	flex-grow: 1;
+}
+
+.textarea--read-only {
+  flex-grow: 1;
+	position: relative;
+}
+
+.textarea--read-only__child {
+	width: 100%;
+	height: 100%;
+}
+
+.textarea--read-only__button {
+	position: absolute !important;
+	top: 1rem;
+	right: 1rem;
 }

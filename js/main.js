@@ -66,21 +66,22 @@ const palette = {
 		palette.user = {};
 		return localStorage.removeItem("palette");
 	},
-	calculate: (palette) => {
-		for (let i = 0; i < palette.colors.length; i++) {
+	calculate: () => {
+		const { user: { settings, colors } } = palette;
+		for (let i = 0; i < colors.length; i++) {
 			let saturationStrength = 0;
-			if (palette.settings.saturation.mode === "custom") {
-				const multiplier = i / palette.colors.length;
+			if (settings.saturation.mode === "custom") {
+				const multiplier = i / colors.length;
 				saturationStrength = Calc.lerp(
 					1,
-					Calc.clamp(Calc.easingFunctions[palette.settings.saturation.gradation](multiplier) + (palette.settings.saturation.offset * 10) / 10, 0, 1),palette.settings.saturation.intensity);
+					Calc.clamp(Calc.easingFunctions[settings.saturation.gradation](multiplier) + (settings.saturation.offset * 10) / 10, 0, 1),settings.saturation.intensity);
 				} else {
 					saturationStrength = 1;
 				}
-				palette.colors[i].alphaHsl = Calc.getAlphaColor(palette.colors[i].hex, palette.settings.background, saturationStrength);
+				colors[i].alphaHsl = Calc.getAlphaColor(colors[i].hex, settings.background, saturationStrength);
 			}
-		console.log(palette);
-		return palette;
+		console.log(palette.user);
+		return palette.user;
 	},
 	color: {
 		remove: (i) => {
@@ -114,16 +115,16 @@ const viewport = {
 		document.querySelector(viewport.selectors.viewport).style.backgroundColor = color;
 	},
 	render: () => {
-		
-		viewport.setBackground(palette.user.settings.background);
-		document.querySelector("#viewport-background-color").value = palette.user.settings.background === "white" ? "#FFFFFF" : palette.user.settings.background === "black" ? "#000000" : palette.user.settings.background;
+		const { user: { settings: { background, saturation }, colors } } = palette;
+
+		viewport.setBackground(background);
+		document.querySelector("#viewport-background-color").value = background === "white" ? "#FFFFFF" : background === "black" ? "#000000" : background;
 		document.querySelector("#reset-viewport-button").style.display = "none";
 		
-		const colorListContainer = document.querySelector(viewport.selectors.colorList);
-		const colorList = palette.user.colors.map((color) => {
-			return viewport.colorRow(color.hex, color.alphaHsl);
+		const colorList = colors.map((color) => {
+			return viewport.colorRow(color.hex,color.alphaHsl);
 		});
-		colorListContainer.innerHTML = colorList.join("") + viewport.colorRow();
+		document.querySelector(viewport.selectors.colorList).innerHTML = colorList.join("") + viewport.colorRow();
 		
 		document.querySelectorAll('output[name="color-output"]').forEach((item) => {
 			item.addEventListener("click", () => {
@@ -131,7 +132,6 @@ const viewport = {
 			});
 		});
 		
-		// viewport.listenForChanges();
 		document.querySelectorAll(viewport.selectors.colorInput).forEach((input, i) => {
 			const oldValue = input.value;
 			viewport.handleUpdate(oldValue, input, i);
@@ -174,15 +174,15 @@ const viewport = {
 		});
 	},
 	colorRow: (input = "", output = "") => {
-		const colorInvert = Calc.brightnessByColor(input) > 128 ? true : false;
-		const backgroundInvert = Calc.brightnessByColor(palette.user.settings.background) < 128 ? true : false;
+		const isColorInvert = Calc.brightnessByColor(input) > 128 ? true : false;
+		const isBackgroundInvert = Calc.brightnessByColor(palette.user.settings.background) < 128 ? true : false;
 		const outputDiv = `<div class="color-row__output" style="background-color: hsla(${output.h},${output.s}%,${output.l}%,${output.a})">
 												<svg class="color-row__icon" style="background-color: ${input}" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.29293 2.29286C4.90241 2.68338 4.90241 3.31655 5.29293 3.70707L9.58582 7.99996L5.29293 12.2929C4.90241 12.6834 4.90241 13.3165 5.29293 13.7071C5.68345 14.0976 6.31662 14.0976 6.70714 13.7071L11.7071 8.70707C12.0977 8.31655 12.0977 7.68338 11.7071 7.29286L6.70714 2.29286C6.31662 1.90233 5.68345 1.90233 5.29293 2.29286Z" fill="currentColor"/></svg>
-												<output class="color-output ${colorInvert ? " color-output--invert" : ""}" name="color-output" aria-label="Transparent color output" title="Copy to clipboard">
+												<output class="color-output ${isColorInvert ? " color-output--invert" : ""}" name="color-output" aria-label="Transparent color output" title="Copy to clipboard">
 													hsla(${output.h},${palette.user.settings.saturation.mode === "custom" ? `<span class="color-output__callout">${output.s}%</span>` : `${output.s}%`},${output.l}%,<span class="color-output__callout">${output.a}</span>)
 												</output>
 											</div>`;
-		return `<li class="color-row ${colorInvert ? "color-row--invert" : ""} ${!input ? (backgroundInvert ? "color-row--empty--invert" : "color-row--empty") : ""}">
+		return `<li class="color-row ${isColorInvert ? "color-row--invert" : ""}${!input ? (isBackgroundInvert ? "color-row--empty--invert" : "color-row--empty") : ""}">
 							<div class="color-row__input" style="background-color: ${input}">
 								<input class="input" type="text" name="color-input" value="${input}" placeholder="Add color..." aria-label="Color input">
 							</div>
@@ -221,11 +221,11 @@ const settings = {
 		saturationChart.data.datasets[0].data = saturationChartData
 		saturationChart.data.labels = saturationChartData
 		saturationChart.update();
-		
-		document.querySelector("#background-mode").addEventListener("input", settings.handleUpdate);
-		document.querySelector("#backround-color > input[type='color']").addEventListener("input", settings.handleUpdate);
-		document.querySelector("#backround-color > input[type='text']").addEventListener("change", settings.handleUpdate);
-		document.querySelector("#saturation").addEventListener("input", settings.handleUpdate);
+
+		// document.querySelector("#background-mode").addEventListener("input", settings.handleUpdate);
+		// document.querySelector("#backround-color > input[type='color']").addEventListener("input", settings.handleUpdate);
+		// document.querySelector("#backround-color > input[type='text']").addEventListener("change", settings.handleUpdate);
+		// document.querySelector("#saturation").addEventListener("input", settings.handleUpdate);
 	},
 	handleUpdate: () => {
 		const { user: { settings } } = palette;
@@ -250,8 +250,7 @@ const settings = {
 		
 		palette.save();
 		renderDom();
-	},
-
+	}
 };
 
 const saturationChart = new Chart(document.querySelector("#saturation-chart").getContext("2d"), {
@@ -326,7 +325,7 @@ function renderExport() {
 
 function renderDom(callback, animate) {
 	palette.user = palette.load() || JSON.parse(JSON.stringify(palette.initial));
-	palette.calculate(palette.user);
+	palette.calculate();
 	settings.render();
 	viewport.render();
 	palette.save();
@@ -344,110 +343,121 @@ function renderDom(callback, animate) {
 			});
 		});
 	}
-	
 }
 
-window.onload = renderDom(undefined, true);
+window.onload = () => {
+	renderDom(() => {
+		document.querySelector("#settings").addEventListener("input", settings.handleUpdate);
+		document.querySelector("#background-color").addEventListener("input", (event) => {
+			event.stopPropagation();
+		});
+		document.querySelector("#background-color").addEventListener("change", settings.handleUpdate);
+	}, true);
+	// Listen for events
 
-// Listen for events
-
-document.querySelectorAll('button[name="button-dialog-open"').forEach((item) => {
-	item.addEventListener("click", () => {
-		document.querySelector("#" + item.dataset.dialog + "-dialog").showModal();
+	document.querySelectorAll('button[name="button-dialog-open"').forEach((item) => {
+		item.addEventListener("click", () => {
+			document.querySelector("#" + item.dataset.dialog + "-dialog").showModal();
+		});
 	});
-});
 
-document.querySelectorAll('button[name="button-dialog-close"').forEach((item) => {
-	item.addEventListener("click", () => {
-		item.closest("dialog").close();
+	document.querySelectorAll('button[name="button-dialog-close"').forEach((item) => {
+		item.addEventListener("click", () => {
+			item.closest("dialog").close();
+		});
 	});
-});
 
-document.querySelector("#button-reset").addEventListener("click", () => {
-	palette.remove();
-	document.querySelector("#reset-dialog").close();
-	Toast.render("✨ Starting fresh!");
-	renderDom(undefined, true);
-});
-
-document.querySelectorAll("input[name='import']").forEach(item => {
-	item.addEventListener("click", () => {
-		const importInput = document.querySelector("#import-input");
-		if (item.value === "hex") {
-			importInput.placeholder = "Paste comma separated HEX colors here"
-		} else {
-			importInput.placeholder = "Paste exported JSON here"
-		}
+	document.querySelector("#button-reset").addEventListener("click", () => {
+		palette.remove();
+		document.querySelector("#reset-dialog").close();
+		Toast.render("✨ Starting fresh!");
+		renderDom(undefined, true);
 	});
-});
 
-document.querySelector("#button-import").addEventListener("click", () => {
-
-	const importInput = document.querySelector("#import-input");
-	if (document.querySelector("input[name='import']:checked").value === "hex") {
-		palette.user.colors.length = 0;
-
-		const hexColors = importInput.value.replace(/,\s*$/, "").split(",");
-		hexColors.forEach(color => {
-			const validatedColor = Calc.validateHex(color.trim());
-			if (validatedColor) {
-				palette.user.colors.push({ "hex": color.trim(), alphaHsl: {} });
+	document.querySelectorAll("input[name='import']").forEach(item => {
+		item.addEventListener("click", () => {
+			const importInput = document.querySelector("#import-input");
+			if (item.value === "hex") {
+				importInput.placeholder = "Paste comma separated HEX colors here"
+			} else {
+				importInput.placeholder = "Paste exported JSON here"
 			}
-		})
+		});
+	});
+
+	document.querySelector("#button-import").addEventListener("click", () => {
+
+		const importInput = document.querySelector("#import-input");
+		if (document.querySelector("input[name='import']:checked").value === "hex") {
+			palette.user.colors.length = 0;
+
+			const hexColors = importInput.value.replace(/,\s*$/, "").split(",");
+			hexColors.forEach(color => {
+				const validatedColor = Calc.validateHex(color.trim());
+				if (validatedColor) {
+					palette.user.colors.push({ "hex": color.trim(), alphaHsl: {} });
+				}
+			})
+			palette.save();
+		} else {
+			localStorage.setItem("palette", JSON.stringify(JSON.parse(importInput.value)));
+		}
+		document.querySelector("#import-dialog").close();
+		importInput.value = "";
+		Toast.render("🎉 Palette imported!");
+		renderDom(undefined, true);
+	});
+
+	document.querySelectorAll("input[name='export']").forEach((item) => {
+		item.addEventListener("click", () => {
+			return renderExport();
+		});
+	});
+
+	document.querySelector("#button-reverse").addEventListener("click", () => {
+		palette.user.colors.reverse();
 		palette.save();
-	} else {
-		localStorage.setItem("palette", JSON.stringify(JSON.parse(importInput.value)));
-	}
-	document.querySelector("#import-dialog").close();
-	importInput.value = "";
-	Toast.render("🎉 Palette imported!");
-	renderDom(undefined, true);
-});
-
-document.querySelectorAll("input[name='export']").forEach((item) => {
-	item.addEventListener("click", () => {
-		return renderExport();
+		Toast.render("🤏 Colors reversed!");
+		renderDom(undefined, true);
 	});
-});
 
-document.querySelector("#button-reverse").addEventListener("click", () => {
-	palette.user.colors.reverse();
-	palette.save();
-	Toast.render("🤏 Colors reversed!");
-	renderDom(undefined, true);
-});
-
-document.querySelector("#button-clear").addEventListener("click", () => {
-	palette.user.colors.length = 0;
-	palette.save();
-	Toast.render("🗑 Colors removed!");
-	renderDom();
-});
-
-document.querySelector("#viewport-background-color").addEventListener("input", function () {
-	viewport.setBackground(this.value);
-	const resetButton = document.querySelector("#reset-viewport-button");
-	resetButton.style.display = "inherit";
-	resetButton.addEventListener("click", function () {
-		document.querySelector("#viewport-background-color").value =
-		palette.user.settings.background === "white" ? "#FFFFFF" : palette.user.settings.background === "black" ? "#000000" : palette.user.settings.background;
-		viewport.setBackground(palette.user.settings.background);
-		resetButton.style.display = "none";
+	document.querySelector("#button-clear").addEventListener("click", () => {
+		palette.user.colors.length = 0;
+		palette.save();
+		Toast.render("🗑 Colors removed!");
+		renderDom();
 	});
-});
 
-document.querySelectorAll(".input--color-combo").forEach(function (item) {
-	item.childNodes[1].value = item.childNodes[3].value;
-	item.childNodes[1].addEventListener("input", function () {
-		this.nextElementSibling.value = this.value;
+	document.querySelector("#viewport-background-color").addEventListener("input", function () {
+		viewport.setBackground(this.value);
+		const resetButton = document.querySelector("#reset-viewport-button");
+		resetButton.style.display = "inherit";
+		resetButton.addEventListener("click", function () {
+			document.querySelector("#viewport-background-color").value =
+			palette.user.settings.background === "white" ? "#FFFFFF" : palette.user.settings.background === "black" ? "#000000" : palette.user.settings.background;
+			viewport.setBackground(palette.user.settings.background);
+			resetButton.style.display = "none";
+		});
 	});
-	item.childNodes[3].addEventListener("change", function () {
-		this.previousElementSibling.value = this.value;
-	});
-});
 
-document.querySelectorAll(".slider__input").forEach((item) => {
-	item.addEventListener("input", (event) => {
-		Slider.update(item);
+	document.querySelectorAll(".input--color-combo").forEach(function (item) {
+		item.childNodes[1].value = item.childNodes[3].value;
+		item.childNodes[1].addEventListener("input", function () {
+			this.nextElementSibling.value = this.value;
+		});
+		item.childNodes[3].addEventListener("change", function () {
+			this.previousElementSibling.value = this.value;
+		});
 	});
-});
+
+	document.querySelectorAll(".slider__input").forEach((item) => {
+		item.addEventListener("input", (event) => {
+			Slider.update(item);
+		});
+	});
+
+	document.querySelector("#button-export-copy").addEventListener("click", () => {
+		const exportInput = document.querySelector("#export-output");
+		navigator.clipboard.writeText(exportInput.value).then(Toast.render("📋 Export copied to clipboard!", document.querySelector("#export-dialog")));
+	})
+}

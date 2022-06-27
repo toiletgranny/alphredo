@@ -6,7 +6,7 @@
 		position: absolute;
 		opacity: 0;
 		visibility: hidden;
-		z-index: 999;
+		z-index: 9999;
 		padding: 0.25rem 0.5rem;
 		background: var(--color-background-surface);
 		border-radius: var(--radius-small);
@@ -15,10 +15,15 @@
 		@extend .t300;
 		white-space: nowrap;
 	}
-	&:hover:after {
+	&:hover:after, &:focus-visible {
 		opacity: 1;
 		visibility: visible;
 		transition: all var(--animation-timing) var(--animation-easing) 250ms;
+	}
+	&:active:after {
+		opacity: 0;
+		visibility: hidden;
+		transition: none;
 	}
 }
 
@@ -41,5 +46,16 @@
 	}
 	&:hover:after {
 		left: calc(100% + var(--tooltip-offset));
+	}
+}
+
+.tooltip--left {
+	&:after {
+		top: 50%;
+		right: 100%;
+		transform: translateY(-50%);
+	}
+	&:hover:after {
+		right: calc(100% + var(--tooltip-offset));
 	}
 }
