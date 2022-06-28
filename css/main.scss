@@ -2,21 +2,11 @@
 @import 'components/_variables';
 
 body {
-	// height: 100vh;
-	// display: grid;
-	// grid-template-columns: 1fr minmax(25rem, 0.25fr);
-	// grid-template-rows: min-content 1fr;
-	// grid-column-gap: 0px;
-	// grid-row-gap: 0px;
+	perspective: 500px;
+	background: var(--color-background-default);
 	color: var(--color-text-icon-default);
 	@extend .t400;
-	perspective: 500px;
 }
-
-// * {
-// 	outline-offset: 0px;
-// 	transition: outline-offset 0.2s cubic-bezier(.17,.84,.44,1);
-// }
 
 *:focus-visible {
 	outline-color: var(--color-accent-500);
@@ -59,8 +49,6 @@ a, a:visited {
 	align-items: center;
 	height: var(--header-height);
 	padding: 0 calc(var(--padding) * (2 / 3));
-	background: var(--color-background-surface);
-	box-shadow: var(--effect-border-bottom);
 }
 
 .header__start {
@@ -93,13 +81,11 @@ a, a:visited {
 	position: relative;
 	display: flex;
 	height: calc(100vh - var(--header-height));
-	overflow: auto;
 }
 
 .aside {
 	display: flex;
 	flex-direction: column;
-	background: var(--color-background-surface);
 }
 
 .aside--settings {
@@ -107,14 +93,12 @@ a, a:visited {
 	gap: 2rem;
 	overflow: auto;
 	padding: var(--padding);
-	box-shadow: var(--effect-border-left);
 }
 
 .aside--toolbar {
 	justify-content: space-between;
 	gap: 1rem;
 	padding: calc(var(--padding) / 3);
-	box-shadow: var(--effect-border-right);
 }
 
 .divider {
@@ -172,6 +156,8 @@ a, a:visited {
 	flex: 1;
 	overflow: auto;
 	padding: var(--padding);
+	border-radius: var(--radius-large) var(--radius-large) 0 0;
+	box-shadow: var(--effect-elevation-1dp);
 	&:hover {
 		background-image: url('../src/checker-grid.svg');
 		background-size: auto;
