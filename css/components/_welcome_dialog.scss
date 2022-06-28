@@ -1,0 +1,83 @@
+.dialog--welcome {
+	height: fit-content;
+	padding: 1rem;
+	gap: 0;
+	& > .dialog__body {
+		padding: 1.5rem;
+		align-items: center;
+		flex-grow: initial;
+		gap: 1.5rem;
+	}
+}
+
+.dialog-welcome__logo {
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius-medium);
+	box-shadow: var(--effect-elevation-2dp);
+}
+
+.dialog__body--illustration {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 3rem 2rem 3rem !important;
+	gap: 1rem;
+	background-color: var(--color-background-default);
+	border-radius: var(--radius-medium);
+}
+
+.color-swatch {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	min-width: 5rem;
+}
+
+.color-swatch__color {
+	position: relative;
+	padding: 1rem;
+	border-radius: var(--radius-large);
+	background: white;
+	overflow: hidden;
+	box-shadow: var(--effect-elevation-2dp);
+	&:after {
+		content: '';
+		position: absolute;
+		z-index: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		width: 50%;
+		background: url('../src/checker-grid.svg');
+		background-size: auto;
+		box-shadow: var(--effect-border-left);
+	}
+	& > div {
+		position: relative;
+		z-index: 2;
+		width: 3rem;
+		height: 3rem;
+		border-radius: var(--radius-medium);
+	}
+}
+
+.color-swatch__figcaption {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .25rem;
+	color: var(--color-text-icon-muted);
+	@extend .t300
+}
+
+.color-swatch__figcaption__hex {
+	font-size: .625rem;
+	font-weight: 600;
+	color: var(--color-accent-500);
+}

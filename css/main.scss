@@ -13,10 +13,10 @@ body {
 	perspective: 500px;
 }
 
-* {
-	outline-offset: 0px;
-	transition: outline-offset 0.2s cubic-bezier(.17,.84,.44,1);
-}
+// * {
+// 	outline-offset: 0px;
+// 	transition: outline-offset 0.2s cubic-bezier(.17,.84,.44,1);
+// }
 
 *:focus-visible {
 	outline-color: var(--color-accent-500);
@@ -27,6 +27,14 @@ body {
 
 svg {
   fill: currentColor;
+}
+
+a, a:visited {
+	text-decoration: none;
+	color: var(--color-accent-500);
+	&:hover {
+		color: var(--color-accent-400);
+	}
 }
 
 // Components
@@ -126,6 +134,9 @@ svg {
 	background: var(--color-background-surface);
 	overflow: hidden;
 	box-shadow: var(--effect-elevation-1dp);
+	&:focus-within {
+		@extend *:focus-visible
+	}
 }
 
 .background-control__color {

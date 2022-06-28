@@ -33,8 +33,8 @@
 [ ] Dark mode,
 [ ] Jednak handlować z problemem błędnej palety,
 [ ] Drag & drop,
-[ ] Modal informacyjny,
+[x] Modal informacyjny,
 
 ## Post-release
-[ ] Dodać splitbee,
-[ ] Dodać feedbackfish,
+[x] Dodać splitbee,
+[x] Dodać feedbackfish,
