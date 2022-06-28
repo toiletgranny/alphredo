@@ -80,7 +80,6 @@ const palette = {
 				}
 				colors[i].alphaHsl = Calc.getAlphaColor(colors[i].hex, settings.background, saturationStrength);
 			}
-		console.log(palette.user);
 		return palette.user;
 	},
 	color: {
