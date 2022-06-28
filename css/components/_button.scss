@@ -11,7 +11,7 @@
 	@extend .t400-strong;
 	box-shadow: var(--effect-elevation-1dp);
   cursor: pointer;
-	transition: background var(--animation-timing) var(--animation-easing);
+	transition: background var(--animation-timing) var(--animation-easing), transform var(--animation-timing) var(--animation-easing);
 	&:hover {
 		background: var(--color-accent-400);
 	}
