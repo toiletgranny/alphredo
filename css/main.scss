@@ -13,10 +13,10 @@ body {
 	perspective: 500px;
 }
 
-* {
-	outline-offset: 0px;
-	transition: outline-offset 0.2s cubic-bezier(.17,.84,.44,1);
-}
+// * {
+// 	outline-offset: 0px;
+// 	transition: outline-offset 0.2s cubic-bezier(.17,.84,.44,1);
+// }
 
 *:focus-visible {
 	outline-color: var(--color-accent-500);

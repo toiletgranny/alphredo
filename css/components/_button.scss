@@ -11,7 +11,7 @@
 	@extend .t400-strong;
 	box-shadow: var(--effect-elevation-1dp);
   cursor: pointer;
-	transition: all var(--animation-timing) var(--animation-easing);
+	transition: background var(--animation-timing) var(--animation-easing);
 	&:hover {
 		background: var(--color-accent-400);
 	}
@@ -46,7 +46,7 @@
 }
 
 .button__icon {
-	transition: all var(--animation-timing) var(--animation-easing);
+	transition: color var(--animation-timing) var(--animation-easing);
 }
 
 .button--ghost {

@@ -355,6 +355,11 @@ window.onload = () => {
 	}, true);
 	// Listen for events
 
+	if (localStorage.getItem("visited") === null) {
+		document.querySelector("#welcome-dialog").showModal();
+		localStorage.setItem("visited", true);
+	}
+
 	document.querySelectorAll('button[name="button-dialog-open"').forEach((item) => {
 		item.addEventListener("click", () => {
 			document.querySelector("#" + item.dataset.dialog + "-dialog").showModal();

@@ -18,7 +18,7 @@
 	&:hover:after, &:focus-visible {
 		opacity: 1;
 		visibility: visible;
-		transition: all var(--animation-timing) var(--animation-easing) 250ms;
+		transition: opacity var(--animation-timing) var(--animation-easing) 250ms;
 	}
 	&:active:after {
 		opacity: 0;
