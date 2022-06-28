@@ -54,12 +54,18 @@
 						<img class="button__icon" src="/src/icon-trash.svg" alt="trash" onload="SVGInject(this)">
 					</button>
 				</div>
-				<div class="background-control">
-					<input id="viewport-background-color" class="background-control__color" type="color" value="#FFFFFF"
-						aria-label="Select viewport background" title="Set viewport preview color">
-					<button id="reset-viewport-button" class="button button--ghost button--icon-only" type="button"
-						aria-label="Reset background color" style="display: none;">
-						<img class="button__icon" src="/src/icon-reset.svg" alt="Reset" onload="SVGInject(this)">
+				<div class="button-group button-group--reverse">
+					<div class="background-control">
+						<input id="viewport-background-color" class="background-control__color" type="color" value="#FFFFFF"
+							aria-label="Select viewport background" title="Set viewport preview color">
+						<button id="reset-viewport-button" class="button button--ghost button--icon-only" type="button"
+							aria-label="Reset background color" style="display: none;">
+							<img class="button__icon" src="/src/icon-reset.svg" alt="Reset" onload="SVGInject(this)">
+						</button>
+					</div>
+					<button data-feedback-fish class="button button--ghost button--icon-only tooltip tooltip--right" type="button"
+						aria-label="Feedback" data-title="Feedback">
+						<img class="button__icon" src="/src/icon-feedback.svg" alt="feedback" onload="SVGInject(this)">
 					</button>
 				</div>
 			</div>
@@ -213,7 +219,7 @@
 					<img width="48" height="48" src="/src/icon-illustrative-warning.svg" alt="Warning">
 					<div class="dialog__body__text">
 						<span class="h500">Reset palette?</span>
-						<p class="t300-regular">This will erase your palette and settings.</p>
+						<p>This will erase your palette  and settings.</p>
 					</div>
 				</div>
 				<div class="dialog__footer">
@@ -280,10 +286,6 @@
 				</div>
 			</dialog>
 		</div>
-
-		<button data-feedback-fish>
-			Feedback
-		</button>
 
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 		<script src="/js/main.js" type="module"></script>
