@@ -2,6 +2,9 @@
 @import 'components/_variables';
 
 body {
+	max-width: 1440px;
+	min-width: 1024px;
+	margin: 0 auto;
 	perspective: 500px;
 	background: var(--color-background-default);
 	color: var(--color-text-icon-default);
