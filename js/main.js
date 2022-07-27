@@ -408,8 +408,9 @@ window.onload = () => {
 		}
 		document.querySelector("#import-dialog").close();
 		importInput.value = "";
-		Toast.render("🎉 Palette imported!");
 		renderDom(undefined, true);
+		Toast.render("🎉 Palette imported!");
+		splitbee.track("Palette imported")
 	});
 
 	document.querySelectorAll("input[name='export']").forEach((item) => {
