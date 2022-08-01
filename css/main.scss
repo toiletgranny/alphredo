@@ -28,6 +28,9 @@ a, a:visited {
 	&:hover {
 		color: var(--color-accent-400);
 	}
+	&.button {
+		color: inherit;
+	}
 }
 
 // Components
