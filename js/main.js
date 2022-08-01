@@ -410,7 +410,6 @@ window.onload = () => {
 		importInput.value = "";
 		renderDom(undefined, true);
 		Toast.render("🎉 Palette imported!");
-		splitbee.track("Palette imported")
 	});
 
 	document.querySelectorAll("input[name='export']").forEach((item) => {
