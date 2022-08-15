@@ -1,3 +1,7 @@
+function roundToTwo(num) {
+	return +(Math.ceil(num + "e+2")  + "e-2");
+}
+
 function colorNameToHex(color)
 {
     var colors = {"aliceblue":"#f0f8ff","antiquewhite":"#faebd7","aqua":"#00ffff","aquamarine":"#7fffd4","azure":"#f0ffff",
@@ -144,7 +148,7 @@ export const hslaToHex = (h, s, l, alpha) => {
 	const f = n => {
 		const k = (n + h / 30) % 12;
 		const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-		return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+		return Math.round(255 * color).toString(16).padStart(2, '0').toUpperCase();   // convert to Hex and prefix "0" if needed
 	};
 	return `#${f(0)}${f(8)}${f(4)}, ${alpha}`;
 }
@@ -171,15 +175,16 @@ export const getAlphaColor = (colorHex, backgroundHex, strength = 1) => {
 			(channel - surface[i]) / (0 - surface[i])
 		];
 	});
-	const alpha = Math.max(...alphaPerChannel.flat().filter(value => 
+	const alpha = roundToTwo(Math.max(...alphaPerChannel.flat().filter(value => 
 		/^-?\d+\.?\d*$/.test(value)
-	));
+	)));
 
 	// Calculate new RGB values based on the alpha
-	const alphaColor = color.map((foo, i) => {
-		return Math.round((foo - surface[i] + surface[i] * alpha) / alpha);
+	const alphaColor = color.map((channel, i) => {
+		return Math.round((channel - surface[i] + surface[i] * alpha) / alpha);
 	});
 
+	// If no alpha color was found, return original, otherwise return alpha color
 	if (alphaColor.includes(NaN)) {
 		const hsl = rgbToHsl(color[0], color[1], color[2]);
 		return {
@@ -194,7 +199,7 @@ export const getAlphaColor = (colorHex, backgroundHex, strength = 1) => {
 			h: hsl[0],
 			s: Math.round(hsl[1] * strength),
 			l: hsl[2],
-			a: Math.round((alpha + Number.EPSILON) * 100) / 100,
+			a: alpha,
 		};
 	};
 }
